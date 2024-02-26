@@ -1,0 +1,17 @@
+{% extends "projetointegrador/base.html" %} <!--  extensao do arquivo base  -->
+
+
+{% block content %}
+    <br/>
+    <br/>
+    Tópicos:
+    <ul>
+        {% for topic in topics %} <!--topic variavel -->
+            <li><!--com o link a baixo a pagina vai direto pata o link do id de topico, do ex. parafuso-->
+                <a href="{% url 'topic' topic.id %}">{{ topic }}</a</li> <!--nao vai ler a variavel mas sim o conteudo dentro-->
+        {% empty %}<!--se estiver vazio-->
+            <li>Não há tópicos adicionados</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'new_topic' %}">Adicionar novos Topicos</a>
+{% endblock content %}  

@@ -1,0 +1,17 @@
+{% extends "projetointegrador/base.html" %} <!--  extensao do arquivo base  -->
+
+
+{% block content %} 
+    <h1>Topic: {{ topic }}</h1>
+    <p>Entradas</p>
+    <ul>
+        {% for entry in entries %} <!--RETORNA AS DUAS INFORMACOES-->
+        <li>
+            <p>{{ entry.date_added | date:'M d, Y H:i'}}</p> <!--formato de  data-->
+            <p>{{ entry.text | linebreaks }}</p> <!--caso seja grande da uma quebra de linha -->
+        </li>
+        {% empty %}
+        <li>Não há Registro</li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

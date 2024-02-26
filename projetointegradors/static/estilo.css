@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: black;
+}
+
+main {
+    flex: 1 0 auto;
+}
+.nav{
+    background-color: black;
+}
+
+footer{
+    background-color: rgb(4, 7, 7);
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    position: relative;
+    color:aliceblue;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.h1{
+    color: aliceblue;
+}
+
+

@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Topic(models.Model): #topico tabela no banco de dados
     text = models.CharField(max_length=200)#define quant max de caracteres
-    date_added = models.DateTimeField(auto_now_add=True)#erda de models e define horario p/ os dados
+    date_added = models.DateTimeField(auto_now_add=True)#herda de models e define horario p/ os dados
 
     def __str__(self):#define o painel admin, devolve uma representacao do modelo
         """devolve uma representacao """

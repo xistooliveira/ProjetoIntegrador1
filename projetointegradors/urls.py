@@ -18,6 +18,10 @@ Including another URLconf
 from django.urls import path
 from . import views
 
-urlpatterns = [
-    path('', views.index)# index funçao dentro de views
+urlpatterns = [ #ROTAS
+    path('', views.index, name= 'index'),# insere index funçao dentro de views
+    path('topics', views.topics, name= 'topics'),
+    path('topics/<topic_id>/', views.topic, name= 'topic'),#rota para views
+    path('home', views.home, name= 'home'),# insere home  funçao dentro de views
+    path('new_topic', views.new_topic, name='new_topic'),# insere NewTopic na views, foi criada para formulario
 ]
