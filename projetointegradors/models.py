@@ -9,7 +9,7 @@ class Topic(models.Model): #topico tabela no banco de dados
         """devolve uma representacao """
         return self.text
 class Entry(models.Model):#entrando com informacoes para classe Topic
-    """algo espefico aprendido"""
+    """algo espefico aprendido (esta em models)"""
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)#chave estrangeira para Topic erdar este modelo relacional
     #esta topic on_delete para que nao apague todo o topico use nulo
     text = models.TextField() 

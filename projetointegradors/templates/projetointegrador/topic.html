@@ -2,13 +2,15 @@
 
 
 {% block content %} 
-    <h1>Topic: {{ topic }}</h1>
-    <p>Entradas</p>
+    <h1>Topico: {{ topic }}</h1>
+    <p>Anotações</p>
+    <p><a href="{% url 'new_entry' topic.id %}">Adicionar uma Nova Anotação</a></p>
     <ul>
         {% for entry in entries %} <!--RETORNA AS DUAS INFORMACOES-->
         <li>
             <p>{{ entry.date_added | date:'M d, Y H:i'}}</p> <!--formato de  data-->
             <p>{{ entry.text | linebreaks }}</p> <!--caso seja grande da uma quebra de linha -->
+        <p><a href="{% url 'edit_entry' entry.id %}">Editar Anotações</a></p>
         </li>
         {% empty %}
         <li>Não há Registro</li>

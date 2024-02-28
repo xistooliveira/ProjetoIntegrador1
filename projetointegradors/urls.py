@@ -19,9 +19,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [ #ROTAS
-    path('', views.index, name= 'index'),# insere index funçao dentro de views
-    path('topics', views.topics, name= 'topics'),
-    path('topics/<topic_id>/', views.topic, name= 'topic'),#rota para views
-    path('home', views.home, name= 'home'),# insere home  funçao dentro de views
+    path('', views.index, name='index'),# insere index funçao dentro de views
+    path('topics', views.topics, name='topics'),
+    path('topics/<topic_id>/', views.topic, name='topic'),#rota para views
+    path('home', views.home, name='home'),# insere nome= home  funçao dentro de views
     path('new_topic', views.new_topic, name='new_topic'),# insere NewTopic na views, foi criada para formulario
+    path('new_entry/<topic_id>', views.new_entry, name='new_entry'),
+    path('edit_entry/<entry_id>', views.edit_entry, name='edit_entry'), #depois crie essa função na view
 ]

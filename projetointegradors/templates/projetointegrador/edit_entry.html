@@ -1,0 +1,13 @@
+{% extends "projetointegrador/base.html" %} <!--  extensao do arquivo base  -->
+
+
+{% block content %} 
+<p><a href="{% url 'topic' topic.id %}">{{ topic }}</a></p>
+    <p>Editar Anotações:</p>
+    
+    <form action="{% url 'edit_entry' entry.id %}" method='post'> <!--invia para mesma pagina que esta-->
+        {% csrf_token %}<!--tag de segurança-->
+        {{ form.as_p }}
+        <button name="submit">Salvar</button>
+    </form>
+{% endblock content %}
