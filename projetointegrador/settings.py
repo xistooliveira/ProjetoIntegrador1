@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'projetointegradors'#criando o AP
+    'projetointegradors',#criando o AP
+    'users',
     #app de terceiro
     #'bootstrap5' , 
 ]
@@ -129,3 +130,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 BOOTSTRAP5 = {
     'include_jquery': True,
 }
+#URL LOGIN DA PAGINA
+LOGIN_URL = '/users/login'

@@ -3,11 +3,13 @@ from .models import Topic, Entry #importado do arquivo models
 from .forms import TopicForm, EntryForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required#permite so quem estiver logado ter acesso as viwes
 # Create your views here.
 def index(request): #pega o as informaçoes e renderiza numa pagina html
     """Pagina principal do Projetointegradors"""
     return render(request, 'projetointegrador/index.html')# faz a requisição
 
+@login_required#RESTRICAO DA PAGINA
 def topics(request):
     """mostrar todos assuntos"""
     topics = Topic.objects.order_by('date_added') #recebendo banco de dados ordenados
@@ -16,12 +18,15 @@ def topics(request):
 def home(request):
     return render(request, 'projetointegrador/home.html')
 
+@login_required#RESTRICAO DA PAGINA
 def topic(request, topic_id):
     """mostra um unico assunto a todas suas entradas"""
     topic = Topic.objects.get(id = topic_id)#pega a informação do banco dados
     entries = topic.entry_set.order_by('-date_added')#entradas relacionadas a topic serao ordenadas.
     context = {'topic': topic, 'entries': entries} #recebe dicionario duas chaves;topic e todas relacionadas a topic.
     return render(request, 'projetointegrador/topic.html', context)
+
+@login_required#RESTRICAO DA PAGINA
 def new_topic(request):
     """adiciona um novo assunto"""
     if request.method != 'POST':
@@ -36,6 +41,7 @@ def new_topic(request):
     context = {'form': form}
     return render(request, 'projetointegrador/new_topic.html', context)
 
+@login_required#RESTRICAO DA PAGINA
 def new_entry(request, topic_id):
     """acrescenta uma nova entrada """
     topic = Topic.objects.get(id=topic_id)

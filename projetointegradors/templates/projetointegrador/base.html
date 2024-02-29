@@ -1,7 +1,15 @@
-<a href="{% url 'index' %}">Index</a>
-<a href="{% url 'topics' %}">Topics</a>
-<a href="{% url 'home' %}">Home</a>
-<a href="{% url 'new_topic' %}">Novos Topicos</a>
+<p> <a href="{% url 'index' %}">Index</a>
+    <a href="{% url 'home' %}">Home</a>
+    <a href="{% url 'topics' %}">Topics</a>
+    <a href="{% url 'new_topic' %}">Novos Topicos</a> 
+    {% if user.is_authenticated %}
+        Olá, {{ user.username }}
+        <a href="{% url 'logout' %}">Sair</a> <!--o logout nao é uma pagina e sim um caminho -->
+    {% else %}
+        <a href="{% url 'login' %}">Entrar</a>
+    {% endif %}
+        
+</p>
           
  <!-- TODO O CONTEÚDO DE UM TEMPLATE DEVE SER EXIBIDO DENTRO DESSE BLOCK CONTEÚDO E O FINAL DELE. -->
  {% block content %}
