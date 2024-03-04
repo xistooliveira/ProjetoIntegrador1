@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'projetointegradors',#criando o AP
     'users',
     #app de terceiro
-    #'bootstrap5' , 
+    'bootstrap5', 
 ]
 
 MIDDLEWARE = [

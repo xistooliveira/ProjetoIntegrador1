@@ -1,27 +1,66 @@
-<p> <a href="{% url 'index' %}">Index</a>
-    <a href="{% url 'home' %}">Home</a>
-    <a href="{% url 'topics' %}">Topics</a>
-    <a href="{% url 'new_topic' %}">Novos Topicos</a> 
-    {% if user.is_authenticated %}
-        Olá, {{ user.username }}
-        <a href="{% url 'logout' %}">Sair</a> <!--o logout nao é uma pagina e sim um caminho -->
-    {% else %}
-        <a href="{% url 'login' %}">Entrar</a>
-    {% endif %}
+{% load bootstrap5 %}
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="=IE=edge">
+        <meta name="viewport" content="width=device-width. initial-scale=1"/>
+        <meta name="description" content="Paloma Comercio"/>
+        <meta name="keywords" content="Gerenciador, produtos, aplicacao web"/>
+        <meta name="author" content="José Genilson"/>
+        <title>Gerenciador de Estoque</title>
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+    </head>
+    <body>
+        <nav class="navbar navbar-dark bg-primary navbar-static-top">
+            <div class="container-fluid">
+                <div class="navebar-header"> 
+                    <button class="navbar-toggler" 
+                            type="button" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#navbar" 
+                            aria-controls="navbarNavDropdown" 
+                            aria-expanded="false" 
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+
+                    </button>
+                        <p class="nav-item"><a class="navbar-brand" href="{% url 'index' %}">Index</a></p>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="navbar-nav">
+                        <li><a class="dropdown-item" href="{% url 'home' %}">Home</a></li>
+                        <li><a class="dropdown-item" href="{% url 'topics' %}">Topics</a></li>
+                        <li><a class="dropdown-item" href="{% url 'new_topic' %}">Novos Topicos</a></li> 
+                    </ul>
+                
+                    <ul class="navbar-nav">
+                        {% if user.is_authenticated %}
+                        <li><a>Olá, {{ user.username }}</a></li>
+                            <li><a href="{% url 'logout' %}">Sair</a></li><!--o logout nao é uma pagina e sim um caminho -->
+                        {% else %}
+                            <li><a href="{% url 'login' %}">Entrar</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            <div>
+        </nav>      
         
-</p>
-          
+        <footer>
+            <br/> 
+            <br/>  
+            <br/>  
+            <br/>        
+            <p> © Copyright 2021</p> 
+        </footer>
+
+    </body>
+</html>
+  
  <!-- TODO O CONTEÚDO DE UM TEMPLATE DEVE SER EXIBIDO DENTRO DESSE BLOCK CONTEÚDO E O FINAL DELE. -->
  {% block content %}
    
  {% endblock content %}     
  <!-- FINAL DO TEMPLATE, É AQUI QUE FINALIZA A PARTE DO TEMPLATE QUE CRIEI, COLOCANDO ENTRE ELES O CÓDIGO DESCRITO  -->
-<footer>
- <br/> 
- <br/>  
- <br/>  
- <br/>        
- <p> © Copyright 2021</p> 
- </footer>
-</body>
-</html>
+
