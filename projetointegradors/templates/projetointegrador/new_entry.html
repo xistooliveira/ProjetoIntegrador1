@@ -5,7 +5,7 @@
 <p><a href="{% url 'topic' topic.id %}">{{ topic }}</a></p>
     <p>Adicione uma Nova Entrada</p>
     
-    <form action="{% url 'new_entry' topic.id %}" method="post"> <!--invia para mesma pagina que esta-->
+    <form action="{% url 'new_entry' topic.id %}" method="post"> <!--envia para mesma pagina que esta-->
         {% csrf_token %}<!--tag de segurança-->
         {{ form.as_p }}
         <button name="submit">Adicionar</button>

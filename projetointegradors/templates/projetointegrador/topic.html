@@ -11,7 +11,7 @@
             <p>{{ entry.date_added | date:'M d, Y H:i'}}</p> <!--formato de  data-->
             <p>{{ entry.text | linebreaks }}</p> <!--caso seja grande da uma quebra de linha -->
         <p><a href="{% url 'edit_entry' entry.id %}">Editar Anotações</a></p>
-        </li>
+            </li>
         {% empty %}
         <li>Não há Registro</li>
         {% endfor %}

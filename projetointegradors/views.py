@@ -1,6 +1,7 @@
-from django.shortcuts import render
-from .models import Topic, Entry #importado do arquivo models
-from .forms import TopicForm, EntryForm
+from django.views.generic import ListView
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Topic, Entry, Produto #importado do arquivo models
+from .forms import TopicForm, EntryForm, ProdutoForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required#permite so quem estiver logado ter acesso as viwes
@@ -75,3 +76,29 @@ def edit_entry(request, entry_id):
             return HttpResponseRedirect(reverse('topic', args=[entry_id]))#argumentos exigido por topic
     context = {'entry': entry, 'topic': topic, 'form': form}
     return render(request, 'projetointegrador/edit_entry.html', context)
+
+
+
+
+
+def lista_produtos(request):
+    #primeira busca de produtos
+    produtos = Produto.objects.all()
+    #retornamos o template p/ lista de produtos
+    return render(request, 'projetointegrador/lista_produtos.html', {'produtos' : produtos})
+
+
+def cria_produto(request):
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_produtos')
+    else:
+        form = ProdutoForm()
+            
+    return render(request, 'projetointegrador/cria_produto.html', {'form' : form})
+def remove_produto(request, produto_id):
+    produto = get_object_or_404(Produto, pk=produto_id)
+    produto.delete()
+    return redirect('lista_produtos')

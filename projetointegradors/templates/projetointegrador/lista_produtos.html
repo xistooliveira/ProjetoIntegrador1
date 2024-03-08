@@ -1,0 +1,38 @@
+{% extends 'projetointegrador/base.html' %}
+
+
+{% block content %}
+    <h2>Lista de Produtos</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-nover">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Código</th>
+                        <th>Existente</th>
+                        <th>SKU</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Açoes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produto in produtos %}
+                    <tr>
+                        <td>{{ produto.nome }}</td>
+                        <td class="category-cell">{{ produto.categoria }}</td>
+                        <td>{{ produto.codigo }}</td>
+                        <td>{{ produto.existente }}</td>
+                        <td>{{ produto.sku }}</td>
+                        <td>{{ produto.preco }}</td> 
+                        <td>{{ produto.quantidade }}</td>
+                        <td>
+                            <a href="{% url 'remove_produto' produto.id %}" class="btn btn-danger btn-sm">Remover</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    {% endblock content %}

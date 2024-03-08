@@ -19,3 +19,45 @@ class Meta:
 def __str__(self):
     """devolve uma string do modelo"""
     return self.text[50] + '...' #quantidade de caracteres
+
+
+class Produto(models.Model):
+    categoria = models.CharField(
+        max_length=255,
+        null=False,
+        blank=False
+    )
+    nome = models.CharField(
+        max_length=255,
+        null=False,
+        blank=False
+    )
+    codigo = models.CharField(
+        max_length=20,
+        null=False,
+        blank=False,
+        unique=True)
+    existente = models.IntegerField(
+        default=0,
+        null=False,
+        blank=False
+    )
+    sku = models.CharField(
+        max_length=20,
+        null=False,
+        blank=False,
+        unique=True
+    )
+    preco = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        null=False,
+        blank=False
+    )
+    quantidade = models.IntegerField()
+
+def __str__(self):
+    return self.name
+
+
+    

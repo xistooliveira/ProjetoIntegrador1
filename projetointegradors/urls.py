@@ -17,6 +17,9 @@ Including another URLconf
 #from django.contrib import admin #cria o painel admin com a biblioteca python
 from django.urls import path
 from . import views
+#from .views import lista_produtos, cria_produto
+
+
 
 urlpatterns = [ #ROTAS
     path('', views.index, name='index'),# insere index funçao dentro de views
@@ -26,4 +29,7 @@ urlpatterns = [ #ROTAS
     path('new_topic', views.new_topic, name='new_topic'),# insere NewTopic na views, foi criada para formulario
     path('new_entry/<topic_id>', views.new_entry, name='new_entry'),
     path('edit_entry/<entry_id>', views.edit_entry, name='edit_entry'), #depois crie essa função na view
+    path('produtos/', views.lista_produtos, name='lista_produtos'),
+    path('cria_produto/', views.cria_produto, name='cria_produto'),
+    path('remove_produto/<int:produto_id>/', views.remove_produto, name='remove_produto'),
 ]
