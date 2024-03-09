@@ -102,3 +102,40 @@ def remove_produto(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
     produto.delete()
     return redirect('lista_produtos')
+
+
+#def editar_produto(id_produto, novo_nome, nova_categoria, novo_codigo, novo_existente, novo_sku, novo_preco, nova_quantidade):
+   # try:
+       # produto = Produto.objects.get(id=id_produto)
+
+        # Atualize os campos conforme necessário
+       # produto.nome = novo_nome
+       # produto.categoria = nova_categoria
+        #produto.codigo = novo_codigo
+        #produto.existente = novo_existente
+        #produto.sku = novo_sku
+        #produto.preco = novo_preco
+       # produto.quantidade = nova_quantidade
+
+        # Salve as alterações no banco de dados
+       # produto.save()
+
+        #return "Produto editado com sucesso."
+
+    #except Produto.DoesNotExist:
+        #return "Produto não encontrado."
+
+# Exemplo de uso:
+# editar_produto(1, "Novo Nome", "Nova Categoria", "Novo Código", True, "Novo SKU", 19.99, 50)
+def editar_produto(request, produto_id):
+    produto = get_object_or_404(Produto, id=produto_id)
+
+    if request.method == 'POST':
+        form = ProdutoForm(request.POST, instance=produto)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_produtos')
+    else:
+        form = ProdutoForm(instance=produto)
+
+    return render(request, 'projetointegrador/editar_produto.html', {'form': form, 'produto': produto})

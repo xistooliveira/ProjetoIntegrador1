@@ -59,5 +59,18 @@ class Produto(models.Model):
 def __str__(self):
     return self.name
 
+def editar_produto(self, novo_nome, nova_categoria, novo_codigo, novo_existente, novo_sku, novo_preco, nova_quantidade):
+        # Atualize os campos conforme necessário
+        self.nome = novo_nome
+        self.categoria = nova_categoria
+        self.codigo = novo_codigo
+        self.existente = novo_existente
+        self.sku = novo_sku
+        self.preco = novo_preco
+        self.quantidade = nova_quantidade
+
+        # Salve as alterações no banco de dados
+        self.save()
+
 
     
