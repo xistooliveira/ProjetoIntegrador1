@@ -1,6 +1,6 @@
 # Paloma Commerce Inventory Management System
 
-![Paloma Commerce Logo](/imagens/lista_produtos.pngg)
+![Paloma Commerce Logo](projetointegradors/static/lista_produto.png)
 
 ## Overview
 
