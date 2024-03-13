@@ -1,10 +1,10 @@
-# Paloma Commerce Inventory Management System
+# Gerenciador de Estoque 
 
-![Paloma Commerce Logo](projetointegradors/static/lista_produto.png)
+![Lista de Produtos](projetointegradors/static/lista_produto.png)
 
 ## Overview
 
-O Paloma Commerce Inventory Management System é uma aplicação web desenvolvida utilizando o framework Django. Este sistema tem como objetivo auxiliar a "Paloma Comércio de Parafusos e Materiais em Geral" no gerenciamento eficiente de seu estoque, proporcionando funcionalidades essenciais e uma solução acessível.
+O Gerenciador de Produtos é uma aplicação web desenvolvida utilizando o framework Django. Este sistema tem como objetivo auxiliar a "Paloma Comércio de Parafusos e Materiais em Geral" no gerenciamento eficiente de seu estoque, proporcionando funcionalidades essenciais e uma solução acessível.
 
 ## Funcionalidades Principais
 
