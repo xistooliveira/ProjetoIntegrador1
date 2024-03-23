@@ -10,12 +10,17 @@ def index(request): #pega o as informaçoes e renderiza numa pagina html
     """Pagina principal do Projetointegradors"""
     return render(request, 'projetointegrador/index.html')# faz a requisição
 
+#def home(request):
+  #  return render(request, 'projetointegrador/home.html')  #
+
+
 @login_required#RESTRICAO DA PAGINA
 def topics(request):
     """mostrar todos assuntos"""
     topics = Topic.objects.order_by('date_added') #recebendo banco de dados ordenados
     context = {'topics': topics}#chave,valor
     return render(request, 'projetointegrador/topics.html', context) #faz requisição do servidor
+
 def home(request):
     return render(request, 'projetointegrador/home.html')
 
@@ -80,14 +85,14 @@ def edit_entry(request, entry_id):
 
 
 
-
+@login_required#RESTRICAO DA PAGINA
 def lista_produtos(request):
     #primeira busca de produtos
     produtos = Produto.objects.all()
     #retornamos o template p/ lista de produtos
     return render(request, 'projetointegrador/lista_produtos.html', {'produtos' : produtos})
 
-
+@login_required#RESTRICAO DA PAGINA
 def cria_produto(request):
     if request.method == 'POST':
         form = ProdutoForm(request.POST)

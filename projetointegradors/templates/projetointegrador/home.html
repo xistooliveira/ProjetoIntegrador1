@@ -1,9 +1,22 @@
 {% extends "projetointegrador/base.html" %} <!--  extensao do arquivo base  -->
-
-
+{% load bootstrap5 %}
+{% load static %}
 {% block content %} 
+  <div class="container"></div>
     <br/>
     <br/>
     <br/>
+    
     <p>Home - Pagina Inicial</p>
-{% endblock content %}
+
+{% endblock content %}   
+{% block extra_body %}
+    <style>
+        body {
+            background-image: url("{% static '/estilo/app.png' %}");
+            background-size: cover;
+            /* Outras propriedades de estilo */
+        }
+    </style>
+
+{% endblock %}

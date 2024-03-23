@@ -17,7 +17,7 @@ class EntryForm(forms.ModelForm):
 class ProdutoForm(forms.ModelForm):
     class Meta:
         model = Produto
-        fields = ['categoria', 'nome', 'codigo', 'existente', 'sku', 'preco', 'quantidade']
+        fields = ['categoria', 'marca', 'nome', 'codigo', 'existente', 'sku', 'preco', 'quantidade']
 
 
 
