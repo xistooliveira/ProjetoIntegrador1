@@ -15,12 +15,11 @@
     </head>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rHOYd3/BKVOFqjDl/1O6cAQuZbc7qTpLb2P87ow40A2trvAUbCU7WVXMTZJsOQS4" crossorigin="anonymous">
     <body>
-        <nav class="navbar navbar-dark bg-primary navbar-static-top">
+        <nav class="navbar" style="background-color: #031e5e9c;" navbar-static-top">
 
             <div class="container-fluid">
                 <div class="navebar-header"> 
-                    <img src="{% static '../static/estoque.png' %}" height='50px'>
-                    <img src="{% static '../static/estoque2.png' %}" style="position: initial;" height='50px'>
+                    <img src="{% static '../static/estoque3.png' %}" height='50px'>
                     <button class="navbar-toggler" 
                             type="button" 
                             data-bs-toggle="collapse" 
@@ -41,21 +40,25 @@
                         <li><a class="dropdown-item" href="{% url 'lista_produtos' %}">Lista de Produtos</a></li>
                         <li><a class="dropdown-item" href="{% url 'cria_produto' %}">Adicionar Produtos</a></li> 
                     </ul>
-                
-                    <ul class="navbar-nav">
+            
+                    <ul class="navbar-nav mx-auto">
                         {% if user.is_authenticated %}
                         <li><a>Olá, {{ user.username }}</a></li>
                             <div><img src="{% static '../static/login.png' %}" style="position: initial;" height='40px'></div>
                             <li><a href="{% url 'logout' %}">Sair</a></li><!--o logout nao é uma pagina e sim um caminho -->
                         {% else %}
-                            <li><a href="{% url 'login' %}">Entrar</a></li>
+                            <div>
+                                <li class="nav-item ms-auto">
+                                    <a class="nav-link" href="{% url 'login' %}">Entrar</a>
+                                </li>
+                            </div>
                         {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>      
         
-        <footer class="footer fixed-bottom mt-auto py-3 bg-light">
+        <footer class="footer fixed-bottom mt-auto py-2 bg-light">
             <div class="container d-flex align-items-center">
                 <span class="text-center mx-auto">© Copyright 2024</span>
             </div>
