@@ -29,4 +29,16 @@ footer{
     color: aliceblue;
 }
 
+.color-text {
+    color: #ffffff; /* Substitua #ff0000 pelo código da cor desejada */
+}
+.cor-de-fundo {
+    background-color: #e1e1e4; /* Substitua pela cor desejada */
+}
 
+/* Estilos para o corpo da página home */
+.home-body {
+    background-color: #d34d4d; /* Cor de fundo para a página home */
+}
+
+/* Outros estilos podem ser adicionados aqui */

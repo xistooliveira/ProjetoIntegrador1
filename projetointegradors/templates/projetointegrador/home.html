@@ -4,49 +4,104 @@
 {% block content %} 
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="=IE=edge">
-        <meta name="viewport" content="width=device-width. initial-scale=1"/>
-        <meta name="description" content="Paloma Comercio"/>
-        <meta name="keywords" content="Gerenciador, produtos, aplicacao web"/>
-        <meta name="author" content="José Genilson"/>
-        <title>Home</title> 
-    </head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rHOYd3/BKVOFqjDl/1O6cAQuZbc7qTpLb2P87ow40A2trvAUbCU7WVXMTZJsOQS4" crossorigin="anonymous">
-    <body>  
-        <div class="container mt-7"></div>
-            <style>
-                body {
-                    background-image: url("{% static '../static/home1.png' %}");
-                    background-size: cover;
-                    background-repeat: no-repeat; /* Evitar repetição da imagem */
-                    background-position: center top;
-                    background-attachment: center; /* Mantém o background fixo enquanto a página é rolada */
-                    padding-top: 5px;
-                    min-height: 100vh; /* Definindo altura total da página */
-                    height: 120vh; 
-                    margin-bottom: 30px; /* Espaço para o footer, ajuste conforme necessário */
-                    
-                 }
-
-                @media (max-width: 768px) {
-                    body {
-                        background-size: contain;
-                    }           /* Outras propriedades de estilo */
-                }
-            </style>
-            <p></p>
-    </body>
-</html>
-{% endblock content %}   
-{% block extra_body %}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="=IE=edge">
+    <meta name="viewport" content="width=device-width. initial-scale=1"/>
+    <meta name="description" content="Paloma Comercio"/>
+    <meta name="keywords" content="Gerenciador, produtos, aplicacao web"/>
+    <meta name="author" content="José Genilson"/>
+    <title>Home</title> 
+    <link rel="stylesheet" type="text/css" href="{% static '../static/estilo/estilo.css' %}">
     <style>
         body {
-            background-image: url("");
+            
             background-size: cover;
-            /* Outras propriedades de estilo */
-        }
-    </style>
+            background-repeat: no-repeat; /* Evitar repetição da imagem */
+            background-position: center top;
+            background-attachment: fixed; /* Mantém o background fixo enquanto a página é rolada */
+            padding-top: 5px;
+            min-height: 100vh; /* Definindo altura total da página */
+            height: 120vh; 
+            margin-bottom: 30px; /* Espaço para o footer, ajuste conforme necessário */
+         }
 
-{% endblock %}
+        /* Estilos adicionais para a div dos botões */
+        .bottom-buttons {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: right;
+            padding: 20px; /* Espaçamento interno para os botões */
+            background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo com transparência */
+            margin-top: 150px;
+        }
+        
+        /* Estilos para o contêiner da imagem */
+        .image-container {
+            display: flex; /* Usando flexbox para centralizar verticalmente */
+            justify-content: center; /* Centralizando horizontalmente */
+            align-items: center; /* Centralizando verticalmente */
+            height: 70vh; /* Definindo altura igual à altura da janela de visualização */
+        }
+
+        /* Estilos para a imagem */
+        img {
+            max-width: 100%; /* Garantindo que a imagem não ultrapasse a largura do contêiner */
+            max-height: 100%; /* Garantindo que a imagem não ultrapasse a altura do contêiner */
+            object-fit: contain; /* Mantendo a proporção original da imagem */
+        }
+        /* Estilo para ajustar o tamanho da imagem dentro do botão */
+        .btn-img img {
+            max-width: 30%; /* Define a largura máxima da imagem como 100% do botão */
+            height: auto; /* Permite que a altura da imagem seja ajustada automaticamente para manter a proporção */
+        }
+    
+    </style>
+    
+</head>
+<body class="home-body">
+    <div class="image-container">
+        <img src="{% static '../static/planilha1.png' %}" alt="Descrição da imagem" width="300" height="300"> 
+    </div> 
+    <div class="container">
+        <!-- Conteúdo da sua página aqui -->
+    </div>
+
+    <!-- Div para os botões -->
+    <div class="bottom-buttons">
+        <div class="container">
+        <div class="d-flex">
+            <button type="button" class="btn btn-img btn-danger">
+                <img src="{% static '../static/fornecedor.png' %}" alt="Imagem 1">
+                Cadastro Fornecedor
+            </button>
+            <button type="button" class="btn btn-img btn-warning">
+                <img src="{% static '../static/cliente.png' %}" alt="Imagem 1">
+                Cadastro Cliente
+            </button>
+            <button type="button" class="btn btn-img btn-success">
+                <img src="{% static '../static/produto.png' %}" alt="Imagem 1">
+                Cadastro Produto
+            </button>
+            <button type="button" class="btn btn-img btn-primary">
+                <img src="{% static '../static/venda.png' %}" alt="Imagem 1">
+                Cadastro Vendas
+            </button>
+            <button type="button" class="btn btn-img btn-dark">
+                <img src="{% static '../static/painel.png' %}" alt="Imagem 1">
+                Painel Geral
+            </button>
+            <button type="button" class="btn btn-img btn-info">
+                <img src="{% static '../static/banco.png' %}" alt="Imagem 1">
+                Banco de Dados
+            </button>
+            <button type="button" class="btn btn-img btn-light">
+                Sobre Nós
+            </button>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock content %}
