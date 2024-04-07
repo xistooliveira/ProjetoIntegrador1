@@ -9,7 +9,7 @@ main {
     flex: 1 0 auto;
 }
 .nav{
-    background-color: black;
+    background-color: rgb(252, 246, 246);
 }
 
 footer{
@@ -18,7 +18,7 @@ footer{
     align-content: center;
     justify-items: center;
     position: relative;
-    color:aliceblue;
+    color:rgb(10, 10, 10);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@ footer{
 }
 
 .color-text {
-    color: #ffffff; /* Substitua #ff0000 pelo código da cor desejada */
+    color: #ece4e4; /* Cor do TEXTO DA NAV BAR */
 }
 .cor-de-fundo {
     background-color: #e1e1e4; /* Substitua pela cor desejada */

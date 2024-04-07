@@ -21,7 +21,7 @@
                 <tbody>
                     {% for produto in produtos %}
                     <tr>
-                        <td>{{ produto.nome }}<a href="{% url 'editar_produto' produto_id=produto.id %}">Editar</a></td>
+                        <td>{{ produto.nome }}<a href="{% url 'editar_produto' produto_id=produto.id %}"class="btn btn-success btn-sm" style="width: 80px; height: 30px;" >Editar</a></td>
                         <td>{{ produto.marca }}</td>
                         <td class="category-cell">{{ produto.categoria }}</td>
                         <td>{{ produto.codigo }}</td>

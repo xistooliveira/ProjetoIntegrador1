@@ -31,18 +31,24 @@
             position: absolute;
             bottom: 0;
             width: 100%;
-            text-align: right;
-            padding: 20px; /* Espaçamento interno para os botões */
+            text-align: center;
+            padding: 10px; /* Espaçamento interno para os botões */
             background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo com transparência */
             margin-top: 150px;
+            
         }
-        
+        bottom {
+            font-size: 9px; 
+        }
+
+
         /* Estilos para o contêiner da imagem */
         .image-container {
             display: flex; /* Usando flexbox para centralizar verticalmente */
             justify-content: center; /* Centralizando horizontalmente */
             align-items: center; /* Centralizando verticalmente */
             height: 70vh; /* Definindo altura igual à altura da janela de visualização */
+        
         }
 
         /* Estilos para a imagem */
@@ -60,9 +66,9 @@
     </style>
     
 </head>
-<body class="home-body">
-    <div class="image-container">
-        <img src="{% static '../static/planilha1.png' %}" alt="Descrição da imagem" width="300" height="300"> 
+<body class="home-body" style="background-color: rgba(5, 12, 48, 0.74);">
+    <div class="image-container"><!--centraliza-->
+        <img src="{% static '../static/inventario.png' %}" alt="Descrição da imagem" width="150" height="150"> 
     </div> 
     <div class="container">
         <!-- Conteúdo da sua página aqui -->
@@ -71,32 +77,30 @@
     <!-- Div para os botões -->
     <div class="bottom-buttons">
         <div class="container">
-        <div class="d-flex">
-            <button type="button" class="btn btn-img btn-danger">
-                <img src="{% static '../static/fornecedor.png' %}" alt="Imagem 1">
-                Cadastro Fornecedor
+        <div class="d-flex" class="image-container"><!--centraliza-->
+            <button type="button" class="btn btn-img btn-sm btn-light" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 120px; height: 50px;" >
+                Home
             </button>
-            <button type="button" class="btn btn-img btn-warning">
-                <img src="{% static '../static/cliente.png' %}" alt="Imagem 1">
-                Cadastro Cliente
+            <button type="button" class="btn btn-img btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 150px; height: 50px;" >
+                <img src="{% static '../static/fornecedor.png' %}" alt="Imagem 1" style="width: 20px; height: 20px;">
+                Fornecedor
             </button>
-            <button type="button" class="btn btn-img btn-success">
-                <img src="{% static '../static/produto.png' %}" alt="Imagem 1">
-                Cadastro Produto
+            <button type="button" class="btn btn-img btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 150px; height: 50px;">
+                <img src="{% static '../static/produto.png' %}" alt="Imagem 1" style="width: 20px; height: 20px;">
+                Produtos
             </button>
-            <button type="button" class="btn btn-img btn-primary">
-                <img src="{% static '../static/venda.png' %}" alt="Imagem 1">
-                Cadastro Vendas
+            <button type="button" class="btn btn-img btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 150px; height: 50px;">
+                <img src="{% static '../static/venda.png' %}" alt="Imagem 1" style="width: 20px; height: 20px;">
+                Saída
             </button>
-            <button type="button" class="btn btn-img btn-dark">
-                <img src="{% static '../static/painel.png' %}" alt="Imagem 1">
+            <button type="button" class="btn btn-img btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 150px; height: 50px;">
+                <img src="{% static '../static/painel.png' %}" alt="Imagem 1" style="width: 20px; height: 20px;">
                 Painel Geral
             </button>
-            <button type="button" class="btn btn-img btn-info">
-                <img src="{% static '../static/banco.png' %}" alt="Imagem 1">
-                Banco de Dados
+            <button type="button" class="btn btn-img btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 120px; height: 50px;">
+                Empresa
             </button>
-            <button type="button" class="btn btn-img btn-light">
+            <button type="button" class="btn btn-img btn-sm btn-light" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 120px; height: 50px;">
                 Sobre Nós
             </button>
         </div>
