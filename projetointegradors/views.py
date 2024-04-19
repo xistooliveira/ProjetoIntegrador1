@@ -1,7 +1,7 @@
 from django.views.generic import ListView
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Topic, Entry, Produto #importado do arquivo models
-from .forms import TopicForm, EntryForm, ProdutoForm
+from .models import Topic, Entry, Produto, Saida, ItemSaida #importado do arquivo models
+from .forms import TopicForm, EntryForm, ProdutoForm, SaidaForm, ItemSaidaForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required#permite so quem estiver logado ter acesso as viwes
@@ -144,3 +144,81 @@ def editar_produto(request, produto_id):
         form = ProdutoForm(instance=produto)
 
     return render(request, 'projetointegrador/editar_produto.html', {'form': form, 'produto': produto})
+
+
+
+def lista_saida(request):
+    saidas = Saida.objects.all()
+    return render(request, 'projetointegrador/lista_saida.html', {'saidas': saidas})
+
+def adicionar_saida(request):
+    if request.method == 'POST':
+        form = SaidaForm(request.POST)
+        if form.is_valid():
+            saida = form.save()
+            return redirect('detalhes_saida', pk=saida.pk)
+    else:
+        form = SaidaForm()
+    return render(request, 'projetointegrador/form_saida.html', {'form': form})
+
+def detalhes_saida(request, pk):
+    saida = Saida.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = ItemSaidaForm(request.POST)
+        if form.is_valid():
+            item_saida = form.save(commit=False)
+            item_saida.saida = saida
+            item_saida.save()
+            return redirect('detalhes_saida', pk=pk)
+    else:
+        form = ItemSaidaForm()
+    return render(request, 'projetointegrador/detalhes_saida.html', {'saida': saida, 'form': form})
+
+
+def registrar_saida(request):
+    produtos_disponiveis = Produto.objects.filter(existente=True, quantidade__gt=0)
+    if request.method == 'POST':
+        form = SaidaForm(request.POST)
+        if form.is_valid():
+            nova_saida = form.save()  # Salvar a saída
+            
+            # Processar cada item da saída
+            for produto_id, quantidade in request.POST.items():
+                if produto_id.startswith('produto_'):
+                    produto_id = produto_id.replace('produto_', '')
+                    produto = get_object_or_404(Produto, pk=produto_id)
+
+                    
+                    quantidade = int(quantidade)
+                    if quantidade > 0 and produto.quantidade >= quantidade:
+                        ItemSaida.objects.create(saida=nova_saida, produto=produto, quantidade=quantidade)
+                        produto.quantidade -= quantidade
+                        produto.save()
+
+            return redirect('lista_produtos')  # Redirecionar para a lista de produtos após a saída ser registrada
+
+    else:
+        form = SaidaForm()
+
+    return render(request, 'projetointegrador/form_saida.html', {'form': form, 'produtos_disponiveis': produtos_disponiveis})
+
+
+@login_required
+def remover_saida(request, saida_id):
+    # Obtenha a saída pelo ID (ou retorne um erro 404 se não existir)
+    saida = get_object_or_404(Saida, pk=saida_id)
+
+    if request.method == 'POST':
+        # Deletar a saída e todos os seus itens associados
+        itens_saida = ItemSaida.objects.filter(saida=saida)
+        for item in itens_saida:
+            # Restaurar a quantidade do produto associado ao item
+            item.produto.quantidade += item.quantidade
+            item.produto.save()
+
+        # Deletar a saída (e todos os seus itens associados) do banco de dados
+        saida.delete()
+
+        return redirect('lista_saida')  # Redirecionar para a lista de saídas após remover a saída
+
+    return render(request, 'projetointegrador/remover_saida.html', {'saida': saida})

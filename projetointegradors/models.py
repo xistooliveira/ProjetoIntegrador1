@@ -1,5 +1,7 @@
 from django.db import models
 
+
+
 # Create your models here.
 class Topic(models.Model): #topico tabela no banco de dados
     text = models.CharField(max_length=200)#define quant max de caracteres
@@ -81,3 +83,16 @@ def editar_produto(self, novo_nome, nova_marca, nova_categoria, novo_codigo, nov
 
 
     
+class Saida(models.Model):
+    data_saida = models.DateTimeField(auto_now_add=True)
+    observacao = models.CharField(max_length=255, blank=True)
+    def __str__(self):
+        return f"Saida #{self.pk}"
+
+class ItemSaida(models.Model):
+    saida = models.ForeignKey(Saida, on_delete=models.CASCADE, related_name='itens')
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    quantidade = models.IntegerField()
+
+    def __str__(self):
+        return f"Item da Saída #{self.pk}"

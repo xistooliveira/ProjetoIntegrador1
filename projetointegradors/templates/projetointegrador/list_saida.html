@@ -1,0 +1,14 @@
+{% extends 'projetointegrador/base.html' %}
+
+
+{% block content %}
+<h2>Listas de Saída</h2>
+<ul>
+{% for saida in saidas %}
+    <li><a href="{% url 'detalhes_saida' pk=saida.pk %}">{{ saida.data_saida }}</a></li>
+{% empty %}
+    <li>Nenhuma saída registrada ainda.</li>
+{% endfor %}
+</ul>
+<a href="{% url 'adicionar_saida' %}">Adicionar Saída</a>
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'projetointegrador/base.html' %}
+
+
+{% block content %}
+<h2>Detalhes da Saída - {{ saida.data_saida }}</h2>
+<ul>
+{% for item in saida.itens.all %}
+    <li>{{ item.produto.nome }} - Quantidade: {{ item.quantidade }}</li>
+{% empty %}
+    <li>Nenhum item nesta saída.</li>
+{% endfor %}
+</ul>
+
+<h3>Adicionar Item à Saída</h3>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Adicionar Item</button>
+</form>
+{% endblock content %}

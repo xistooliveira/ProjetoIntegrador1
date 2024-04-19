@@ -1,0 +1,45 @@
+{% extends 'projetointegrador/base.html' %}
+
+
+{% block content %}
+<body>
+    <h2>Lista de Saídas</h2>
+
+    {% if saidas %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Observação</th>
+                    <th>Data de Registro</th>
+                    <th>Itens da Saída</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for saida in saidas %}
+                    <tr>
+                        <td>{{ saida.pk }}</td>
+                        <td>{{ saida.observacao }}</td>
+                        <td>{{ saida.data_registro|date:"d/m/Y H:i:s" }}</td>
+                        <td>
+                            <ul>
+                                {% for item in saida.itens.all %}
+                                    <li>{{ item.produto.nome }} - Quantidade: {{ item.quantidade }}</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                        <td>
+                            <!-- Link para remover a saída -->
+                            <a href="{% url 'remover_saida' saida.pk %}">Remover</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>Nenhuma saída registrada.</p>
+    {% endif %}
+
+    <a href="{% url 'registrar_saida' %}">Registrar Nova Saída</a>
+</body>
+{% endblock content %}

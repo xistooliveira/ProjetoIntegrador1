@@ -1,0 +1,17 @@
+{% extends 'projetointegrador/base.html' %}
+
+
+{% block content %}
+<body>
+    <h2>Registro de Nova Saída</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Registrar Saída</button>
+    </form>
+
+    <a href="{% url 'lista_produtos' %}">Voltar para Lista de Produtos</a>
+</body>
+{% endblock content %}

@@ -33,4 +33,9 @@ urlpatterns = [ #ROTAS
     path('cria_produto/', views.cria_produto, name='cria_produto'),
     path('remove_produto/<int:produto_id>/', views.remove_produto, name='remove_produto'),
     path('produto/<int:produto_id>/editar/', views.editar_produto, name='editar_produto'),
+    path('lista_saida/', views.lista_saida, name='lista_saida'),
+    path('adicionar_saida/', views.adicionar_saida, name='adicionar_saida'),
+    path('detalhes_saida/<int:pk>/', views.detalhes_saida, name='detalhes_saida'),
+    path('registrar_saida/', views.registrar_saida, name='registrar_saida'),
+    path('remover_saida/<int:saida_id>/', views.remover_saida, name='remover_saida'),
 ]
