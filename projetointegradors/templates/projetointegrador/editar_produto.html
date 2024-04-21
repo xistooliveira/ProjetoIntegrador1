@@ -1,12 +1,16 @@
 {% extends 'projetointegrador/base.html' %}
 
 {% block content %}
-  <h2 style="margin-left: 20px">Editar Produto</h2>
-  <form class="row g-2 align-items-center" style="margin-left: 20px" method="post" enctype="multipart/form-data">
-    <div class="col-auto">    
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Salvar alterações</button>
-    </div>
-  </form>
+  <h2 class="h2 text-dark font-weight-bold mb-3" style="margin-left: 10px" >Editar Produto</h2>
+      <div class="table-responsive">
+        <form class="row g-3 align-items-center" style="margin-left: 10px" method="post" enctype="multipart/form-data">
+          <div class="col-auto">    
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="table-responsive">
+              <button type="submit" class="btn btn-primary m-2">Salvar alterações</button>
+            </div>
+          </div>
+        </form>
+      </div>
 {% endblock %}

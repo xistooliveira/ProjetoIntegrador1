@@ -4,37 +4,39 @@
 {% block content %}
     <h2 style="margin-left: 20px">Lista de Produtos</h2>
         <div class="table-responsive">
-            <table class="table table-bordered table-nover">
-                <thead class="table-dark">
-                    <tr>
-                        <th>Nome</th>
-                        <th>Marca</th>
-                        <th>Categoria</th>
-                        <th>Código</th>
-                        <th>Existente</th>
-                        <th>SKU</th>
-                        <th>Preço</th>
-                        <th>Quantidade</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for produto in produtos %}
-                    <tr>
-                        <td>{{ produto.nome }}<a href="{% url 'editar_produto' produto_id=produto.id %}"class="btn btn-success btn-sm" style="width: 80px; height: 30px;" >Editar</a></td>
-                        <td>{{ produto.marca }}</td>
-                        <td class="category-cell">{{ produto.categoria }}</td>
-                        <td>{{ produto.codigo }}</td>
-                        <td>{{ produto.existente }}</td>
-                        <td>{{ produto.sku }}</td>
-                        <td>{{ produto.preco }}</td> 
-                        <td>{{ produto.quantidade }}</td>
-                        <td>
-                            <a href="{% url 'remove_produto' produto.id %}" class="btn btn-danger btn-sm">Remover</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+            <div class="table-responsive">
+                <table class="table table-bordered table-nover m-3">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Nome</th>
+                            <th>Marca</th>
+                            <th>Categoria</th>
+                            <th>Código</th>
+                            <th>Existente</th>
+                            <th>SKU</th>
+                            <th>Preço</th>
+                            <th>Quantidade</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for produto in produtos %}
+                        <tr>
+                            <td>{{ produto.nome }}<a href="{% url 'editar_produto' produto_id=produto.id %}"class="btn btn-success btn-sm" style="width: 80px; height: 30px;" >Editar</a></td>
+                            <td>{{ produto.marca }}</td>
+                            <td class="category-cell">{{ produto.categoria }}</td>
+                            <td>{{ produto.codigo }}</td>
+                            <td>{{ produto.existente }}</td>
+                            <td>{{ produto.sku }}</td>
+                            <td>{{ produto.preco }}</td> 
+                            <td>{{ produto.quantidade }}</td>
+                            <td>
+                                <a href="{% url 'remove_produto' produto.id %}" class="btn btn-danger btn-sm">Remover</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
     {% endblock content %}

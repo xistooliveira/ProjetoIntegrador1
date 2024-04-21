@@ -3,43 +3,45 @@
 
 {% block content %}
 <body>
-    <h2>Lista de Saídas</h2>
-
-    {% if saidas %}
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Observação</th>
-                    <th>Data de Registro</th>
-                    <th>Itens da Saída</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for saida in saidas %}
+    <h2 style="margin-left: 20px">Lista de Saídas</h2>
+    <div class="table-responsive">
+        {% if saidas %}
+            <table class="table table-bordered table-nover m-3">
+                <thead class="table-dark">
                     <tr>
-                        <td>{{ saida.pk }}</td>
-                        <td>{{ saida.observacao }}</td>
-                        <td>{{ saida.data_registro|date:"d/m/Y H:i:s" }}</td>
-                        <td>
-                            <ul>
-                                {% for item in saida.itens.all %}
-                                    <li>{{ item.produto.nome }} - Quantidade: {{ item.quantidade }}</li>
-                                {% endfor %}
-                            </ul>
-                        </td>
-                        <td>
-                            <!-- Link para remover a saída -->
-                            <a href="{% url 'remover_saida' saida.pk %}">Remover</a>
-                        </td>
+                        <th>ID</th>
+                        <th>Observação</th>
+                        <th>Data de Registro</th>
+                        <th>Itens da Saída</th>
+                        <th></th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>Nenhuma saída registrada.</p>
-    {% endif %}
+                </thead>
+                <tbody>
+                    {% for saida in saidas %}
+                        <tr>
+                            <td>{{ saida.pk }}</td>
+                            <td>{{ saida.observacao }}</td>
+                            <td>{{ saida.data_saida|date:"d/m/Y H:i:s" }}</td>
+                            <td>
+                                <ul>
+                                    {% for item in saida.itens.all %}
+                                        <li>{{ item.produto.nome }} - Quantidade: {{ item.quantidade }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>
+                                <!-- Link para remover a saída -->
+                                <a href="{% url 'remover_saida' saida.pk %}"class="btn btn-danger btn-sm">Remover</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+            <p>Nenhuma saída registrada.</p>
+        {% endif %}
 
-    <a href="{% url 'registrar_saida' %}">Registrar Nova Saída</a>
-</body>
+        <a href="{% url 'registrar_saida' %}"class="btn btn-success btn-sm m-3" style="width: 120px; height: 50px;">Registrar Nova Saída</a>
+    </body>
 {% endblock content %}
