@@ -1,13 +1,16 @@
 {% extends 'projetointegrador/base.html' %}
 
 {% block content %}
-    <h2 style="margin-left: 20px">Adicionar Produtos</h2>
-    <form class="row g-3 align-items-center" style="margin-left: 20px" method="post" action="{% url 'cria_produto' %}">
+    <h3 style="margin-left: 20px">Adicionar Produtos</h3>
+    <form class="row g-2 align-items-center" style="margin-left: 20px" method="post" action="{% url 'cria_produto' %}">
         <div class="col-auto">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-primary">Salvar Produto</button>
         </div>
     </form>
+        <div>
+
+        </div>
     
 {% endblock %}

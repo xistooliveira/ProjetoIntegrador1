@@ -3,7 +3,7 @@
 
 {% block content %}
 <body>
-    <h2 style="margin-left: 20px">Lista de Saídas</h2>
+    <h3 style="margin-left: 20px">Lista de Saídas</h3>
     <div class="table-responsive">
         {% if saidas %}
             <table class="table table-bordered table-nover m-3">
@@ -19,13 +19,13 @@
                 <tbody>
                     {% for saida in saidas %}
                         <tr>
-                            <td>{{ saida.pk }}</td>
-                            <td>{{ saida.observacao }}</td>
-                            <td>{{ saida.data_saida|date:"d/m/Y H:i:s" }}</td>
-                            <td>
-                                <ul>
+                            <td class="bg-light">{{ saida.pk }}</td>
+                            <td class="bg-light">{{ saida.observacao }}</td>
+                            <td class="bg-light">{{ saida.data_saida|date:"d/m/Y H:i:s" }}</td>
+                            <td class="bg-light">
+                                <ul class="list-group">
                                     {% for item in saida.itens.all %}
-                                        <li>{{ item.produto.nome }} - Quantidade: {{ item.quantidade }}</li>
+                                        <li class="list-group-item">{{ item.produto.nome }} - Quantidade: {{ item.quantidade }}</li>
                                     {% endfor %}
                                 </ul>
                             </td>

@@ -2,16 +2,27 @@
 
 
 {% block content %}
+<style>
+    .formulario{
+        margin-left: 20px;
+    } 
+</style>
 <body>
-    <h2>Registro de Nova Saída</h2>
+    <h3 style="margin-left: 20px">Registro de Nova Saída</h3>
+    <div class="formulario">
+        <div class="table-responsive ml-3">
+            <table class="table table-bordered table-nover m-1">
+                <thead class="table-dark">
+                    <form method="post"class="mt-4">
+                        {% csrf_token %}
+                        {{ form.as_p }}
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-
-        <button type="submit">Registrar Saída</button>
-    </form>
-
-    <a href="{% url 'lista_produtos' %}">Voltar para Lista de Produtos</a>
+                        <button type="submit" class="btn btn-primary btn-sm">Registrar Saída</button>
+                    </form>
+                <a href="{% url 'lista_produtos' %}" class="btn btn-success btn-sm" style="width: 150px; height: 30px;">Lista de Produtos</a>
+                </thead>
+            </table>
+        </div>
+    </div>
 </body>
 {% endblock content %}

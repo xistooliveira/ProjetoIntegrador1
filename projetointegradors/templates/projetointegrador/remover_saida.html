@@ -3,7 +3,7 @@
 
 {% block content %}
 <body>
-    <h2>Confirmar Remoção de Saída</h2>
+    <h3>Confirmar Remoção de Saída</h3>
     <p>Você está prestes a remover a seguinte saída:</p>
     <p><strong>ID:</strong> {{ saida.pk }}</p>
     <p><strong>Observação:</strong> {{ saida.observacao }}</p>
@@ -15,6 +15,6 @@
         <button type="submit">Confirmar Remoção</button>
     </form>
 
-    <a href="{% url 'lista_saida' %}">Cancelar e Voltar para Lista de Saídas</a>
+    <a href="{% url 'lista_saida' %}" class="btn btn-success btn-sm" style="width: 200px; height: 30px;">Cancelar e Ir Lista de Saídas</a>
 </body>
 {% endblock content %}
