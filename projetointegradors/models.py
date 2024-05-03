@@ -34,6 +34,11 @@ class Produto(models.Model):
         null=False,
         blank=False
     )
+    modelo = models.CharField(
+        max_length=255,
+        null=True,
+        blank=True
+    )
     marca = models.CharField(
         max_length=255,
         null=False,
@@ -67,9 +72,10 @@ class Produto(models.Model):
 def __str__(self):
     return self.name
 
-def editar_produto(self, novo_nome, nova_marca, nova_categoria, novo_codigo, novo_existente, novo_sku, novo_preco, nova_quantidade):
+def editar_produto(self, novo_nome, novo_modelo, nova_marca, nova_categoria, novo_codigo, novo_existente, novo_sku, novo_preco, nova_quantidade):
         # Atualize os campos conforme necessário
         self.nome = novo_nome
+        self.modelo = novo_modelo
         self.marca = nova_marca
         self.categoria = nova_categoria
         self.codigo = novo_codigo

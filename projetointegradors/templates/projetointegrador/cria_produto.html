@@ -1,8 +1,19 @@
 {% extends 'projetointegrador/base.html' %}
 
 {% block content %}
+<style>
+    /* Estiliza o formulário para remover margem entre os parágrafos */
+    form {
+        margin-left: 20px; /* Margem à esquerda para o formulário */
+    }
+
+    /* Remove a margem inferior dos parágrafos dentro do formulário */
+    form p {
+        margin-bottom: 5px; /* Ajuste o valor conforme necessário */
+    }
+</style>
     <h3 style="margin-left: 20px">Adicionar Produtos</h3>
-    <form class="row g-2 align-items-center" style="margin-left: 20px" method="post" action="{% url 'cria_produto' %}">
+    <form class="row g-1 align-items-center" style="margin-left: 20px" method="post" action="{% url 'cria_produto' %}">
         <div class="col-auto">
             {% csrf_token %}
             {{ form.as_p }}

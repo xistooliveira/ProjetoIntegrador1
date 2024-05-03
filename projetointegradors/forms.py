@@ -17,7 +17,7 @@ class EntryForm(forms.ModelForm):
 class ProdutoForm(forms.ModelForm):
     class Meta:
         model = Produto
-        fields = ['categoria', 'marca', 'nome', 'codigo', 'existente', 'sku', 'preco', 'quantidade']
+        fields = ['categoria', 'marca', 'nome', 'modelo', 'codigo', 'existente', 'sku', 'preco', 'quantidade']
 
 
 
@@ -33,7 +33,7 @@ class SaidaForm(forms.ModelForm):
         produtos_disponiveis = Produto.objects.filter(existente=True, quantidade__gt=0)
         for produto in produtos_disponiveis:
             self.fields[f'produto_{produto.id}'] = forms.IntegerField(
-                label=produto.nome,
+                label=f'{produto.nome} - Modelo: {produto.modelo}',  # Combine nome e modelo
                 min_value=0,
                 max_value=produto.quantidade,
                 required=False,

@@ -3,10 +3,19 @@
 
 {% block content %}
 <body>
-    <h3 style="margin-left: 20px">Lista de Saídas</h3>
+    <style>
+        /* Remove margem e preenchimento em torno do título */
+        h4 {
+            margin: 0; /* Remove todas as margens */
+            padding: 0; /* Remove todo o preenchimento */
+            margin-bottom: 0; /* Define a margem inferior como zero */
+        }
+        
+    </style>
+    <h4 style="margin-left: 20px">Lista de Saídas</h4>
     <div class="table-responsive">
         {% if saidas %}
-            <table class="table table-bordered table-nover m-3">
+            <table class="table table-bordered table-nover m-3 md-2 mt-0">
                 <thead class="table-dark">
                     <tr>
                         <th>ID</th>
@@ -41,7 +50,8 @@
         {% else %}
             <p>Nenhuma saída registrada.</p>
         {% endif %}
-
-        <a href="{% url 'registrar_saida' %}"class="btn btn-success btn-sm m-3" style="width: 120px; height: 50px;">Registrar Nova Saída</a>
+        <div>
+            <a href="{% url 'registrar_saida' %}"class="btn btn-success btn-sm m-5 mt-0" style="width: 120px; height: 50px;">Registrar Nova Saída</a>
+        </div>
     </body>
 {% endblock content %}

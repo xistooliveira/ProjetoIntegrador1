@@ -1,7 +1,18 @@
 {% extends 'projetointegrador/base.html' %}
 
 {% block content %}
-  <h2 class="h2 text-dark font-weight-bold mb-3" style="margin-left: 10px" >Editar Produto</h2>
+<style>
+  /* Estiliza o formulário para remover margem entre os parágrafos */
+  form {
+      margin-left: 20px; /* Margem à esquerda para o formulário */
+  }
+
+  /* Remove a margem inferior dos parágrafos dentro do formulário */
+  form p {
+      margin-bottom: 5px; /* Ajuste o valor conforme necessário */
+  }
+</style>
+  <h3 class="h2 text-dark font-weight-bold mb-3" style="margin-left: 10px" >Editar Produto</h3>
       <div class="table-responsive">
         <form class="row g-3 align-items-center" style="margin-left: 10px" method="post" enctype="multipart/form-data">
           <div class="col-auto">    
