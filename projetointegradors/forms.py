@@ -39,6 +39,27 @@ class SaidaForm(forms.ModelForm):
                 required=False,
                 initial=0,
             )
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        
+        # Salvar a instância principal de saída
+        if commit:
+            instance.save()
+
+        # Salvar os itens de saída
+        for field_name, field_value in self.cleaned_data.items():
+            if field_name.startswith('produto_') and field_value > 0:
+                produto_id = int(field_name.replace('produto_', ''))
+                produto = Produto.objects.get(pk=produto_id)
+                
+                # Cria ou atualiza o item de saída
+                ItemSaida.objects.update_or_create(
+                    saida=instance,
+                    produto=produto,
+                    defaults={'quantidade': field_value}
+                )
+
+        return instance
 
     def clean(self):
         cleaned_data = super().clean()
