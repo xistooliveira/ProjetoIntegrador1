@@ -27,9 +27,10 @@ class SaidaForm(forms.ModelForm):
     class Meta:
         model = Saida
         fields = ['observacao']
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Adicione um campo de seleção para os itens da saída
+        # Adicionar um campo de seleção para os itens da saída
         produtos_disponiveis = Produto.objects.filter(existente=True, quantidade__gt=0)
         for produto in produtos_disponiveis:
             self.fields[f'produto_{produto.id}'] = forms.IntegerField(
@@ -39,11 +40,12 @@ class SaidaForm(forms.ModelForm):
                 required=False,
                 initial=0,
             )
+
     def save(self, commit=True):
         instance = super().save(commit=False)
-        
-        # Salvar a instância principal de saída
-        if commit:
+
+        # Salvar a instância principal de saída primeiro, se commit=False
+        if not commit:
             instance.save()
 
         # Salvar os itens de saída
@@ -51,37 +53,20 @@ class SaidaForm(forms.ModelForm):
             if field_name.startswith('produto_') and field_value > 0:
                 produto_id = int(field_name.replace('produto_', ''))
                 produto = Produto.objects.get(pk=produto_id)
-                
-                # Cria ou atualiza o item de saída
+                quantidade = field_value
+
+                # Criar ou atualizar o item de saída
                 ItemSaida.objects.update_or_create(
                     saida=instance,
                     produto=produto,
-                    defaults={'quantidade': field_value}
+                    defaults={'quantidade': quantidade}
                 )
 
+        # Agora salvar a instância principal de saída, se commit=True
+        if commit:
+            instance.save()
+
         return instance
-
-    def clean(self):
-        cleaned_data = super().clean()
-        total_quantidade = 0
-
-        # Verifica se pelo menos um produto foi selecionado
-        for field_name, field_value in cleaned_data.items():
-            if field_name.startswith('produto_') and field_value > 0:
-                total_quantidade += field_value
-
-        if total_quantidade == 0:
-            raise forms.ValidationError("Selecione pelo menos um produto para a saída.")
-        elif total_quantidade > 0:
-            # Verifica se a quantidade total não excede a quantidade disponível para cada produto
-            for field_name, field_value in cleaned_data.items():
-                if field_name.startswith('produto_') and field_value > 0:
-                    produto_id = int(field_name.replace('produto_', ''))
-                    produto = Produto.objects.get(pk=produto_id)
-                    if field_value > produto.quantidade:
-                        raise forms.ValidationError(f"A quantidade selecionada para '{produto.nome}' excede a quantidade disponível.")
-
-        return cleaned_data
 
 class ItemSaidaForm(forms.ModelForm):
     class Meta:

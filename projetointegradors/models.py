@@ -96,9 +96,10 @@ class Saida(models.Model):
         return f"Saida #{self.pk}"
 
 class ItemSaida(models.Model):
-    saida = models.ForeignKey(Saida, on_delete=models.CASCADE, related_name='itens')
+    saida = models.ForeignKey('Saida', on_delete=models.CASCADE, related_name='itens')
     produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
     quantidade = models.IntegerField()
+    preco_total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
 
     def __str__(self):
         return f"Item da Saída #{self.pk}"

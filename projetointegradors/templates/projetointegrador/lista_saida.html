@@ -1,6 +1,5 @@
 {% extends 'projetointegrador/base.html' %}
 
-
 {% block content %}
 <body>
     <style>
@@ -10,7 +9,6 @@
             padding: 0; /* Remove todo o preenchimento */
             margin-bottom: 0; /* Define a margem inferior como zero */
         }
-        
     </style>
     <h4 style="margin-left: 20px">Lista de Saídas</h4>
     <div class="table-responsive">
@@ -22,6 +20,7 @@
                         <th>Observação</th>
                         <th>Data de Registro</th>
                         <th>Itens da Saída</th>
+                        <th>Preço Total</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -34,13 +33,14 @@
                             <td class="bg-light">
                                 <ul class="list-group">
                                     {% for item in saida.itens.all %}
-                                        <li class="list-group-item">{{ item.produto.nome }} - Quantidade: {{ item.quantidade }}</li>
+                                        <li class="list-group-item">{{ item.produto.nome }} - Quantidade: {{ item.quantidade }} - Preço Unitário: R$ {{ item.produto.preco }} - Preço Total: R$ {{ item.preco_total }}</li>
                                     {% endfor %}
                                 </ul>
                             </td>
+                            <td class="bg-light">{{ saida.preco_total }}</td> <!-- Mostra o preço total da saída -->
                             <td>
                                 <!-- Link para remover a saída -->
-                                <a href="{% url 'remover_saida' saida.pk %}"class="btn btn-danger btn-sm">Remover</a>
+                                <a href="{% url 'remover_saida' saida.pk %}" class="btn btn-danger btn-sm">Remover</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -51,7 +51,7 @@
             <p>Nenhuma saída registrada.</p>
         {% endif %}
         <div>
-            <a href="{% url 'registrar_saida' %}"class="btn btn-success btn-sm m-5 mt-0" style="width: 120px; height: 50px;">Registrar Nova Saída</a>
+            <a href="{% url 'registrar_saida' %}" class="btn btn-success btn-sm m-5 mt-0" style="width: 120px; height: 50px;">Registrar Nova Saída</a>
         </div>
     </body>
 {% endblock content %}

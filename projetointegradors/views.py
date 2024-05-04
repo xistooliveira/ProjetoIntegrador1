@@ -175,27 +175,40 @@ def detalhes_saida(request, pk):
     return render(request, 'projetointegrador/detalhes_saida.html', {'saida': saida, 'form': form})
 
 
+@login_required
 def registrar_saida(request):
     produtos_disponiveis = Produto.objects.filter(existente=True, quantidade__gt=0)
+
     if request.method == 'POST':
         form = SaidaForm(request.POST)
         if form.is_valid():
-            nova_saida = form.save()  # Salvar a saída
-            
+            nova_saida = form.save(commit=False)
+            nova_saida.save()
+
             # Processar cada item da saída
             for produto_id, quantidade in request.POST.items():
                 if produto_id.startswith('produto_'):
                     produto_id = produto_id.replace('produto_', '')
                     produto = get_object_or_404(Produto, pk=produto_id)
-
-                    
                     quantidade = int(quantidade)
+
                     if quantidade > 0 and produto.quantidade >= quantidade:
-                        ItemSaida.objects.create(saida=nova_saida, produto=produto, quantidade=quantidade)
+                        # Criar o item de saída
+                        item_saida, created = ItemSaida.objects.get_or_create(
+                            saida=nova_saida,
+                            produto=produto,
+                            defaults={'quantidade': quantidade}
+                        )
+
+                        # Calcular e salvar o preço total do item
+                        item_saida.preco_total = produto.preco * quantidade
+                        item_saida.save()
+
+                        # Atualizar a quantidade disponível do produto
                         produto.quantidade -= quantidade
                         produto.save()
 
-            return redirect('lista_produtos')  # Redirecionar para a lista de produtos após a saída ser registrada
+            return redirect('lista_saida')  # Redirecionar para a lista de saídas após registrar a saída
 
     else:
         form = SaidaForm()
