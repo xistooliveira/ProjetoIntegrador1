@@ -2,9 +2,9 @@
 
 
 {% block content %} 
-    <h1>Topico: {{ topic }}</h1>
+    <h3>Fornecedor {{ topic }}</h3>
     <p>Anotações</p>
-    <p><a href="{% url 'new_entry' topic.id %}">Adicionar uma Nova Anotação</a></p>
+    <p><a href="{% url 'new_entry' topic.id %}">Adicionar uma nova Informação</a></p>
     <ul>
         {% for entry in entries %} <!--RETORNA AS DUAS INFORMACOES-->
         <li>

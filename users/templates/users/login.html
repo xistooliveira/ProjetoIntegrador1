@@ -1,19 +1,58 @@
-{% extends "projetointegrador/base.html" %} 
+{% extends "projetointegrador/base.html" %}
 
 {% block content %}
 
-    {% if form.errors %}
-        <p>Seu Login e Senha Estão Incorretos, Tente Novamente</p>
 
+
+<style>
+    /* Estiliza o contêiner principal para ce
+
+    /* Estiliza
+
+    /* Estiliza o contêiner principal para centralizar o conteúdo */
+    .mergulho {
+        height: 100vh; /* Altura total da viewport */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(124, 128, 146, 0.74); /* Cor de fundo */
+    }
+
+    /* Estiliza o formulário */
+    form {
+        max-width: 400px; /* Largura máxima do formulário */
+        padding: 20px; /* Espaçamento interno do formulário */
+        background-color: #fff; /* Cor de fundo do formulário */
+        border-radius: 5px; /* Borda arredondada */
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    }
+
+    /* Estiliza os parágrafos dentro do formulário */
+    form p {
+        margin-bottom: 10px; /* Espaçamento inferior dos parágrafos */
+    }
+</style>
+
+<div class="mergulho">
+    <form action="{% url 'login' %}" method="post" class="px-4 py-3">
+        <h3>Acesso</h3>
+        {% if form.errors %}
+            <p>Seu Login e Senhas estão incorretas, tente novamente</p>
         {% endif %}
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
+        {% csrf_token %}
+        
+        
+        
+<div class="mb-3">
             {{ form.as_p }}
-
-            <button name="submit">Entrar</button>
-            <imput type="hidden" name="next" value="{% url 'index' %}"/>
-
-            
-        </form>
+        
+   
+</div>
+        
+  
+<input type="hidden" name="next" value="{% url 'index' %}" />
+        <button type="submit" class="btn btn-primary" name="submit">Entrar</button>
+    </form>
+</div>
 
 {% endblock %}
