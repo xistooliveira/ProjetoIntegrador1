@@ -1,19 +1,39 @@
-{% extends "projetointegrador/base.html" %} <!--  extensao do arquivo base  -->
-
+{% extends "projetointegrador/base.html" %}
 
 {% block content %} 
-    <h3>Fornecedor {{ topic }}</h3>
+    
+ 
+<h3>Fornecedor {{ topic }}</h3>
     <p>Anotações</p>
-    <p><a href="{% url 'new_entry' topic.id %}">Adicionar uma nova Informação</a></p>
+    
+    
+<p><a href="{% url 'new_entry' topic.id %}">Adicionar uma nova Informação</a></p>
+    
     <ul>
-        {% for entry in entries %} <!--RETORNA AS DUAS INFORMACOES-->
-        <li>
-            <p>{{ entry.date_added | date:'M d, Y H:i'}}</p> <!--formato de  data-->
-            <p>{{ entry.text | linebreaks }}</p> <!--caso seja grande da uma quebra de linha -->
-        <p><a href="{% url 'edit_entry' entry.id %}">Editar Anotações</a></p>
-            </li>
+        {% for entry in entries %}
+        
+
+        
+<li>
+            <p>{{ entry.date_added | date:'M d, Y H:i' }}</p>
+            <p>{{ entry.text | linebreaks }}</p>
+            
+            
+<!-- Exibição dos novos campos -->
+    <p><strong>Endereço:</strong> {{ entry.address }}</p>
+            
+            
+    <p><strong>CNPJ:</strong> {{ entry.cnpj }}</p>
+    <p><strong>Telefone:</strong> {{ entry.phone }}</p>
+            
+            
+     
+    <p><a href="{% url 'edit_entry' entry.id %}">Editar Anotações</a></p>
+</li>
         {% empty %}
-        <li>Não há Registro</li>
+        
+        
+<li>Não há Registro</li>
         {% endfor %}
     </ul>
 {% endblock content %}

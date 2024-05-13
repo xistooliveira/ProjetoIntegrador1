@@ -5,7 +5,7 @@ from .models import Topic, Entry, Produto, Saida, ItemSaida#importacao das clase
 class TopicForm(forms.ModelForm): #cria classe TopicForm, herda de classe model
     class Meta: #cria classe meta
         model = Topic 
-        fields = ['text']
+        fields = ['text', 'endereco', 'cnpj', 'telefone']
         labels = {'text': ''}#campo vazio para prenchimento do formulario
 class EntryForm(forms.ModelForm):
     class Meta:

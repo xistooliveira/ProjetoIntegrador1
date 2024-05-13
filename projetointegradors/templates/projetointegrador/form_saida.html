@@ -3,23 +3,31 @@
 
 {% block content %}
 <style>
-    .formulario{
-        margin-left: 20px;
-    } 
+    
+    /* Estiliza o formulário para remover margem entre os parágrafos */
+    form {
+        margin-left: 30px; /* Margem à esquerda para o formulário */
+    }
+    /* Remove a margem inferior dos parágrafos dentro do formulário */
+    formp {
+        margin-bottom: 5px; /* Ajuste o valor conforme necessário */
+    }
+
 </style>
 <body>
-    <h3 style="margin-left: 20px">Registro de Nova Saída</h3>
+    <h3 class="ms-3" style="margin-left: 20px">Registro de Nova Saída</h3>
     <div class="formulario">
-        <div class="table-responsive ml-3">
-            <table class="table table-bordered table-nover m-1">
+        <div class="table-responsive ml-3 mb-3" style="max-height: 400px;">
                 <thead class="table-dark">
-                    <form method="post"class="mt-4">
-                        {% csrf_token %}
+                    <form class="ml-3 align-items-center" method="post"class="row g-3" style="margin-left: 20px">
+                        <div>{% csrf_token %}
                         {{ form.as_p }}
+                        </div>
 
                         <button type="submit" class="btn btn-primary btn-sm">Registrar Saída</button>
+                        <a href="{% url 'lista_produtos' %}" class="btn btn-success btn-sm" style="width: 150px; height: 30px;">Lista de Produtos</a>
                     </form>
-                <a href="{% url 'lista_produtos' %}" class="btn btn-success btn-sm" style="width: 150px; height: 30px;">Lista de Produtos</a>
+                
                 </thead>
             </table>
         </div>

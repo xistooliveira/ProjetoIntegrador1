@@ -34,16 +34,16 @@ def topic(request, topic_id):
 
 @login_required#RESTRICAO DA PAGINA
 def new_topic(request):
-    """adiciona um novo assunto"""
-    if request.method != 'POST':
-        #nenhm dado submetido; cria um formulario em branco
-        form = TopicForm() #variavel  recebe funcao da classe TopicForm que foi importado do nosso arquivo
-    else: 
-        # Dados de POST submetidos; processa os dados
+    if request.method == 'POST':
         form = TopicForm(request.POST)
-        if form.is_valid():#se os dados nao form verdadeiro nao salva
-            form.save()#salva altomaticamente usando model no banco de dados
-            return HttpResponseRedirect(reverse('topic'))#vc pode redirecionar para outra pagina(http)
+        if form.is_valid():
+            form.save()
+   
+# Redireciona para a página que exibe os tópicos (substitua 'topic_view' pelo nome correto da sua visualização)
+            return HttpResponseRedirect(reverse('topic'))
+    else:
+        form = TopicForm()
+
     context = {'form': form}
     return render(request, 'projetointegrador/new_topic.html', context)
 

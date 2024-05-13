@@ -62,24 +62,53 @@
             max-width: 30%; /* Define a largura máxima da imagem como 100% do botão */
             height: auto; /* Permite que a altura da imagem seja ajustada automaticamente para manter a proporção */
         }
+        
+        .transparent-div {
+            background-color: rgba(255, 255, 255, 0.5); /* Cor de fundo com transparência */
+            padding: 20px;
+            opacity: 0.7; /* Opacidade da div */
+        }
+        .bottom-div {
+            position: fixed;
+            left: 10;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 35px;
+            text-align: center;
+            
+        }
+        .my-div {
+            height: 150px; /* Altura da div */
+            background-color: #b6b8bb; /* Cor de fundo azul */
+            color: #fff; /* Cor do texto branco */
+            display: flex;
+            justify-content: center; /* Alinha horizontalmente */
+            align-items: center; /* Alinha verticalmente */
+        
+              
+        }
     
     </style>
     
 </head>
 <body class="home-body" style="background-color: rgba(5, 12, 48, 0.74);">
     <div class="image-container"><!--centraliza-->
-        <img src="{% static '../static/inventario.png' %}" alt="Descrição da imagem" width="150" height="150"> 
+        <img src="{% static '../static/laptop.png' %}" alt="Descrição da imagem" width="600" height="600">
+    </div> 
+    <div class="image-container"><!--centraliza-->
+        
     </div> 
     <div class="container">
         <!-- Conteúdo da sua página aqui -->
     </div>
 
     <!-- Div para os botões -->
-    <div class="bottom-buttons">
+    <div class="bottom-buttons transparent-div bottom-div my-div">
         <div class="container">
-        <div class="d-flex" class="image-container"><!--centraliza-->
+        <div class="d-flex" class="image-container "><!--centraliza-->
             <a href="{% url 'home' %}">   
-                <button type="button" class="btn btn-img btn-sm btn-light" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 120px; height: 50px;" >
+                <button type="button" class="btn btn-img btn-sm btn-light d-inline-block" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 120px; height: 50px;" >
                     Home
                 </button>
             </a>

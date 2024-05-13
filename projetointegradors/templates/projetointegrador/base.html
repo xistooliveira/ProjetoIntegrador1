@@ -26,7 +26,7 @@
                             aria-controls="navbarNavDropdown" 
                             aria-expanded="false" 
                             aria-label="Toggle navigation">
-                            <img src="{% static '../static/estoque.png' %}" height='50px'>
+                            <img src="{% static '../static/estoque.png' %}" height='40px'>
                         <span></span>
 
                     </button>
@@ -44,16 +44,25 @@
                     </ul>
             
                     <ul class="navbar-nav mx-auto">
+                    
                         {% if user.is_authenticated %}
-                        <li><a>Olá, {{ user.username }}</a></li>
-                            <div><img src="{% static '../static/login.png' %}" style="position: initial;" height='40px'></div>
-                            <li><a href="{% url 'logout' %}">Sair</a></li><!--o logout nao é uma pagina e sim um caminho -->
-                        {% else %}
-                            <div>
+                        <ul class="navbar-nav text-end">
+                           <div><li><a class="ml-auto"> Olá, {{ user.username }}</a></li></div>
+                            <div><img src="{% static '../static/login.png' %}"class="rounded float-end"height='50px'></div>
+                        </ul>
+                        <ul class="navbar-nav text-end">
+                                <div>
+                                <li class="nav-item"><a class="nav-link ml-auto me-3" href="{% url 'logout' %}">Sair</a></li><!--o logout nao é uma pagina e sim um caminho -->
+                                </div>
+                            {% else %}
+                        </ul>
+                            <ul class="navbar-nav">
+                                <div>
                                 <li class="nav-item ms-auto">
                                     <a class="nav-link" href="{% url 'login' %}">Entrar</a>
                                 </li>
-                            </div>
+                                </div>
+                            </ul>
                         {% endif %}
                     </ul>
                 </div>
