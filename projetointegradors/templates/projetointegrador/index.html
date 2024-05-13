@@ -1,9 +1,174 @@
-
-
-
 {% extends "projetointegrador/base.html" %} <!--  extensao do arquivo base  -->
-
-
+{% load bootstrap5 %}
+{% load static %}
 {% block content %} 
-    <p></p>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="=IE=edge">
+    <meta name="viewport" content="width=device-width. initial-scale=1"/>
+    <meta name="description" content="Paloma Comercio"/>
+    <meta name="keywords" content="Gerenciador, produtos, aplicacao web"/>
+    <meta name="author" content="José Genilson"/>
+    <title>Home</title> 
+    <link rel="stylesheet" type="text/css" href="{% static '../static/estilo/estilo.css' %}">
+    <style>
+        body {
+            
+            background-size: cover;
+            background-repeat: no-repeat; /* Evitar repetição da imagem */
+            background-position: center top;
+            background-attachment: fixed; /* Mantém o background fixo enquanto a página é rolada */
+            padding-top: 5px;
+            min-height: 50vh; /* Definindo altura total da página */
+            height: 120vh; 
+            margin-bottom: 150px; /* Espaço para o footer, ajuste conforme necessário */
+         }
+
+        /* Estilos adicionais para a div dos botões */
+        .bottom-buttons {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px; /* Espaçamento interno para os botões */
+            background-color: rgba(255, 255, 255, 0.8); /* Cor de fundo com transparência */
+            margin-top: 150px;
+            
+        }
+        bottom {
+            font-size: 9px; 
+        }
+
+
+        /* Estilos para o contêiner da imagem */
+        .image-container {
+            display: flex; /* Usando flexbox para centralizar verticalmente */
+            justify-content: center; /* Centralizando horizontalmente */
+            align-items: center; /* Centralizando verticalmente */
+            height: 70vh; /* Definindo altura igual à altura da janela de visualização */
+        
+        }
+
+        /* Estilos para a imagem */
+        img {
+            max-width: 100%; /* Garantindo que a imagem não ultrapasse a largura do contêiner */
+            max-height: 100%; /* Garantindo que a imagem não ultrapasse a altura do contêiner */
+            object-fit: contain; /* Mantendo a proporção original da imagem */
+        }
+        /* Estilo para ajustar o tamanho da imagem dentro do botão */
+        .btn-img img {
+            max-width: 30%; /* Define a largura máxima da imagem como 100% do botão */
+            height: auto; /* Permite que a altura da imagem seja ajustada automaticamente para manter a proporção */
+        }
+        
+        .transparent-div {
+            background-color: rgba(255, 255, 255, 0.5); /* Cor de fundo com transparência */
+            padding: 20px;
+            opacity: 0.7; /* Opacidade da div */
+        }
+        .bottom-div {
+            position: fixed;
+            left: 10;
+            bottom: 0;
+            width: 100%;
+            background-color: #f8f9fa;
+            padding: 35px;
+            text-align: center;
+            
+        }
+        .my-div {
+            height: 150px; /* Altura da div */
+            background-color: #b6b8bb; /* Cor de fundo azul */
+            color: #fff; /* Cor do texto branco */
+            display: flex;
+            justify-content: center; /* Alinha horizontalmente */
+            align-items: center; /* Alinha verticalmente */
+        
+              
+        }
+        .header{
+            display: flex;
+            flex-flow:row wrap;
+            height: 600px;
+            background: rgba(33, 41, 83, 0.74);
+            justify-content: center;
+            align-items: center;
+        }
+        .headline{
+            margin-left: 10%;
+            flex: 40%;
+            
+
+        }
+        .img-headline{
+            margin-right: 10%;
+            flex: 40%;
+            text-align: center;
+        }
+        .headline h2{
+            font-weight: 900;
+            font-size: 20px;
+            color: rgb(12, 12, 68);
+            padding: 0;
+            margin: 0;
+        }
+        .headline p{
+            color: gray;
+            text-align: left;
+
+        }
+        .contact-btn{
+            display: inline-block;
+            background: rgb(211, 29, 129);
+            padding: 20px;
+            color: white;
+            text-transform: uppercase;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .contact-btn:hover{
+            background: rgb(37, 37, 82);
+        }
+    
+    </style>
+    
+</head>
+<!--body class="home-body" style="background-color: #031131c2;"> --->
+    <!--<div class="image-container"> --> <!--centraliza-->
+        <!--<img src="{% static '../static/laptop.png' %}" alt="Descrição da imagem" width="600" height="600"> -->
+<body class="home-body">
+    </div> 
+    <div class="image-container"><!--centraliza-->
+       
+    </div> 
+    <div class="container">
+        <!-- Conteúdo da sua página aqui -->
+
+    </div>
+    <header class="header">
+        <div class="headline">
+            <!--<h2 style="letter-spacing: 15px;">Gerenciador Estoque facíl</h2> -->
+            <h2 style="font-size: 60px;">Gerenciador Estoque facíl</h2>
+            <P>texte para inserir</P>
+            <a href="#" class="contact-btn btn-sm btn-primary btn-light d-inline-block" data-bs-toggle="collapse" style="width: 150px; height: 50px;">Sobre Nós</a>
+        </div>
+        <div class="img-headline">
+            <img style="max-width: 90%;" src="{% static '../static/laptop.png' %}">
+
+        </div>
+    </header>
+    <div>
+
+    </div>
+
+    <!-- Div para os botões -->
+    
+        
+        </div>
+        </div>
+    </div>
+</body>
+</html>
 {% endblock content %}

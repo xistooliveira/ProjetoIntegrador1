@@ -21,6 +21,7 @@ def topics(request):
     context = {'topics': topics}#chave,valor
     return render(request, 'projetointegrador/topics.html', context) #faz requisição do servidor
 
+@login_required#RESTRICAO DA PAGINA
 def home(request):
     return render(request, 'projetointegrador/home.html')
 
@@ -146,7 +147,7 @@ def editar_produto(request, produto_id):
     return render(request, 'projetointegrador/editar_produto.html', {'form': form, 'produto': produto})
 
 
-
+@login_required#RESTRICAO DA PAGINA
 def lista_saida(request):
     saidas = Saida.objects.all()
     return render(request, 'projetointegrador/lista_saida.html', {'saidas': saidas})

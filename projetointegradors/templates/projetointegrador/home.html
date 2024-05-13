@@ -21,9 +21,9 @@
             background-position: center top;
             background-attachment: fixed; /* Mantém o background fixo enquanto a página é rolada */
             padding-top: 5px;
-            min-height: 100vh; /* Definindo altura total da página */
+            min-height: 50vh; /* Definindo altura total da página */
             height: 120vh; 
-            margin-bottom: 30px; /* Espaço para o footer, ajuste conforme necessário */
+            margin-bottom: 150px; /* Espaço para o footer, ajuste conforme necessário */
          }
 
         /* Estilos adicionais para a div dos botões */
@@ -88,19 +88,79 @@
         
               
         }
+        .header{
+            display: flex;
+            flex-flow:row wrap;
+            height: 600px;
+            background: rgba(33, 41, 83, 0.74);
+            justify-content: center;
+            align-items: center;
+        }
+        .headline{
+            margin-left: 10%;
+            flex: 40%;
+            
+
+        }
+        .img-headline{
+            margin-right: 10%;
+            flex: 40%;
+            text-align: center;
+        }
+        .headline h2{
+            font-weight: 900;
+            font-size: 20px;
+            color: rgb(12, 12, 68);
+            padding: 0;
+            margin: 0;
+        }
+        .headline p{
+            color: gray;
+            text-align: left;
+
+        }
+        .contact-btn{
+            display: inline-block;
+            background: rgb(211, 29, 129);
+            padding: 20px;
+            color: white;
+            text-transform: uppercase;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .contact-btn:hover{
+            background: rgb(37, 37, 82);
+        }
     
     </style>
     
 </head>
-<body class="home-body" style="background-color: rgba(5, 12, 48, 0.74);">
-    <div class="image-container"><!--centraliza-->
-        <img src="{% static '../static/laptop.png' %}" alt="Descrição da imagem" width="600" height="600">
+<!--body class="home-body" style="background-color: #031131c2;"> --->
+    <!--<div class="image-container"> --> <!--centraliza-->
+        <!--<img src="{% static '../static/laptop.png' %}" alt="Descrição da imagem" width="600" height="600"> -->
+<body class="home-body">
     </div> 
     <div class="image-container"><!--centraliza-->
-        
+       
     </div> 
     <div class="container">
         <!-- Conteúdo da sua página aqui -->
+
+    </div>
+    <header class="header">
+        <div class="headline">
+            <h2 style="letter-spacing: 15px;">Gerenciador Estoque facíl</h2>
+            <h2 style="font-size: 60px;">Estoque Paloma Comércio</h2>
+            <P>texte para inserir</P>
+            <a href="#" class="contact-btn btn-sm btn-primary btn-light d-inline-block" data-bs-toggle="collapse" style="width: 150px; height: 50px;">ACESSO</a>
+        </div>
+        <div class="img-headline">
+            <img style="max-width: 90%;" src="{% static '../static/laptop.png' %}">
+
+        </div>
+    </header>
+    <div>
+
     </div>
 
     <!-- Div para os botões -->
