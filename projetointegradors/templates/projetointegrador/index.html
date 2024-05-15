@@ -21,7 +21,7 @@
             background-position: center top;
             background-attachment: fixed; /* Mantém o background fixo enquanto a página é rolada */
             padding-top: 5px;
-            min-height: 50vh; /* Definindo altura total da página */
+            min-height: 200vh; /* Definindo altura total da página */
             height: 120vh; 
             margin-bottom: 150px; /* Espaço para o footer, ajuste conforme necessário */
          }
@@ -47,7 +47,7 @@
             display: flex; /* Usando flexbox para centralizar verticalmente */
             justify-content: center; /* Centralizando horizontalmente */
             align-items: center; /* Centralizando verticalmente */
-            height: 70vh; /* Definindo altura igual à altura da janela de visualização */
+            height: 90vh; /* Definindo altura igual à altura da janela de visualização */
         
         }
 
@@ -117,6 +117,7 @@
         .headline p{
             color: gray;
             text-align: left;
+            text-justify: center;
 
         }
         .contact-btn{
@@ -131,6 +132,63 @@
         .contact-btn:hover{
             background: rgb(37, 37, 82);
         }
+        section{
+        display: inline-block;
+        margin-top:80px;
+        /* border:1px solid black; */
+        margin-left:5%;
+        margin-right:5%;
+        padding:5%;
+        text-align: center;
+    
+        }
+
+        section h2{
+        width:100%;
+        font-size:50px;
+        margin:0;
+        font-family: 'Lobster', cursive;
+        font-weight: bold;
+        color:#180F4A;
+        }
+
+        .servicos{
+        display: inline-block;
+        margin-top:5%;
+        }
+
+        .card{
+        display: inline-block;
+        width: 30%;
+        padding:20px;
+        margin:1%;
+        border:1px solid #FF2978;
+        border-radius:10px;
+        cursor:pointer;
+        }
+
+        .texto-oculto{
+        display: none;
+        }
+
+        .card:hover{
+        background: #FF2978;
+        color:white;
+        padding:40px;
+        }
+
+        .card:hover img{
+        display: none;
+        }
+
+        .card:hover .card-text{
+        display:none;
+        }
+
+        .card:hover .texto-oculto{
+        display:block;
+        }
+
     
     </style>
     
@@ -151,24 +209,91 @@
         <div class="headline">
             <!--<h2 style="letter-spacing: 15px;">Gerenciador Estoque facíl</h2> -->
             <h2 style="font-size: 60px;">Gerenciador Estoque facíl</h2>
-            <P>texte para inserir</P>
+            <br>
             <a href="#" class="contact-btn btn-sm btn-primary btn-light d-inline-block" data-bs-toggle="collapse" style="width: 150px; height: 50px;">Sobre Nós</a>
         </div>
         <div class="img-headline">
-            <img style="max-width: 90%;" src="{% static '../static/laptop.png' %}">
+            <img style="max-width: 80%;" src="{% static '../static/laptop.png' %}">
 
         </div>
     </header>
-    <div>
-
+    <div class="container">
+        <P><p></p>O "Gerenciador de Estoque Fácil" é uma aplicação web desenvolvida utilizando o framework Django, projetada para simplificar e otimizar o controle de estoque de produtos em diversos tipos de negócios e organizações. Esta aplicação oferece uma interface intuitiva e funcionalidades robustas para acompanhar o inventário, registrar entradas e saídas de produtos, além de fornecer insights valiosos para a gestão eficiente de estoques.</P>
+        <h3 style="font-size:30px;">Principais Recursos:</h3>
+            <h4 style="font-size:20px;">Controle de Estoque Centralizado:</h4>
+            <p>O Gerenciador de Estoque Fácil permite que os usuários registrem todos os produtos disponíveis em um único local centralizado. Cada item pode ser categorizado, com informações detalhadas como nome, descrição, quantidade atual, preço unitário, fornecedor e outras características relevantes.</p>
+            <h4 style="font-size:20px;">Registro de Entradas e Saídas:</h4>
+            <p>Os usuários podem facilmente registrar entradas de novos produtos no estoque, indicando a quantidade recebida, data de entrada e outros detalhes pertinentes. Da mesma forma, as saídas de produtos também podem ser registradas, informando a quantidade retirada, destino e motivo da retirada.</P>
     </div>
-
-    <!-- Div para os botões -->
-    
-        
-        </div>
-        </div>
+    <div class="container">
+        <h3>Integrantes do Projeto</h3>
+        <br>
+        <ol><li>Alexander da Silva RA2205385</li>
+            <li>Diego Santos da Ressurreição RA2203424</li>
+            <li>Gabriel Macedo Silva RA2202412</li>
+            <li>José Genilson Araújo de Souza RA2207172</li>
+            <li>Luciano Junior Lima de Oliveira RA2221111</li>
+            <li>Luciano Miguel de Oliveira RA2109986</li>
+            <li>Marcela Barros Lima RA2210061</li>
+        </ol>
+        <hr>
     </div>
+    <section>
+        <h3>O que podemos fazer pelo seu negócio?</h3>
+        <div class="servicos">
+            <div class="card">
+                <img src="{% static '../static/pc.png' %}">
+                <div class="card-text">
+                    <h3>Desenvolvimento de Sites</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae nobis totam omnis veritatis
+                        sit
+                        distinctio doloremque quia officiis, asperiores, consectetur dolorem magnam doloribus eos odio
+                        quibusdam? Excepturi corrupti labore necessitatibus?</p>
+                </div>
+                <div class="texto-oculto">
+                    <h3>Outro conteúdo qualquer</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae nobis totam omnis veritatis
+                        sit
+                        distinctio doloremque quia officiis, asperiores, consectetur dolorem magnam doloribus eos odio
+                        quibusdam? Excepturi corrupti labore necessitatibus?</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="{% static '../static/smartphone.png' %}">
+                <div class="card-text">
+                    <h3>Desenvolvimento de Apps</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae nobis totam omnis veritatis
+                        sit
+                        distinctio doloremque quia officiis, asperiores, consectetur dolorem magnam doloribus eos odio
+                        quibusdam? Excepturi corrupti labore necessitatibus?</p>
+                </div>
+                <div class="texto-oculto">
+                    <h3>Outro conteúdo qualquer</h3>
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae nobis totam omnis veritatis
+                        sit
+                        distinctio doloremque quia officiis, asperiores, consectetur dolorem magnam doloribus eos odio
+                        quibusdam? Excepturi corrupti labore necessitatibus?</p>
+                </div>
+            </div>
+                <div class="card">
+                    <img src="{% static '../static/marketing.png' %}">
+                    <div class="card-text">
+                        <h3>Marketing Digital pra Você</h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae nobis totam omnis veritatis
+                        sit
+                        distinctio doloremque quia officiis, asperiores, consectetur dolorem magnam doloribus eos odio
+                        quibusdam? Excepturi corrupti labore necessitatibus?</p>
+                    </div>
+                    <div class="texto-oculto">
+                        <h3>Outro conteúdo qualquer</h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae nobis totam omnis veritatis
+                        sit
+                        distinctio doloremque quia officiis, asperiores, consectetur dolorem magnam doloribus eos odio
+                        quibusdam? Excepturi corrupti labore necessitatibus?</p>
+                    </div>
+                </div>
+            </div>
+    </section>
 </body>
 </html>
 {% endblock content %}

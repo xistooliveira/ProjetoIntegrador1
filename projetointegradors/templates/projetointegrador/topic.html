@@ -3,23 +3,23 @@
 {% block content %} 
     
  
-<h3>Fornecedor {{ topic }}</h3>
+<div class="container"><h3>Fornecedor {{ topic }}</h3>
     <p>Anotações</p>
     
     
-<p><a href="{% url 'new_entry' topic.id %}">Adicionar uma nova Informação</a></p>
+    <p><a href="{% url 'new_entry' topic.id %}">Adicionar uma nova Informação</a></p>
     
     <ul>
         {% for entry in entries %}
         
 
         
-<li>
+    <li>
             <p>{{ entry.date_added | date:'M d, Y H:i' }}</p>
             <p>{{ entry.text | linebreaks }}</p>
             
             
-<!-- Exibição dos novos campos -->
+    <!-- Exibição dos novos campos -->
     <p><strong>Endereço:</strong> {{ entry.address }}</p>
             
             
@@ -29,11 +29,12 @@
             
      
     <p><a href="{% url 'edit_entry' entry.id %}">Editar Anotações</a></p>
-</li>
+    </li>
         {% empty %}
         
         
-<li>Não há Registro</li>
+    <li>Não há Registro</li>
         {% endfor %}
     </ul>
+</div>
 {% endblock content %}

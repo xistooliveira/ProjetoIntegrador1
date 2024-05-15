@@ -15,13 +15,13 @@
     <link rel="stylesheet" type="text/css" href="{% static '../static/estilo/estilo.css' %}">
     <style>
         body {
-            
+            background-color: #b6b8bb;
             background-size: cover;
             background-repeat: no-repeat; /* Evitar repetição da imagem */
             background-position: center top;
             background-attachment: fixed; /* Mantém o background fixo enquanto a página é rolada */
             padding-top: 5px;
-            min-height: 50vh; /* Definindo altura total da página */
+            min-height: 300vh; /* Definindo altura total da página */
             height: 120vh; 
             margin-bottom: 150px; /* Espaço para o footer, ajuste conforme necessário */
          }
@@ -47,7 +47,7 @@
             display: flex; /* Usando flexbox para centralizar verticalmente */
             justify-content: center; /* Centralizando horizontalmente */
             align-items: center; /* Centralizando verticalmente */
-            height: 70vh; /* Definindo altura igual à altura da janela de visualização */
+            height: 20vh; /* Definindo altura igual à altura da janela de visualização */
         
         }
 
@@ -91,7 +91,7 @@
         .header{
             display: flex;
             flex-flow:row wrap;
-            height: 600px;
+            height: 920px; /* tamanho fundo do background texto*/
             background: rgba(33, 41, 83, 0.74);
             justify-content: center;
             align-items: center;
@@ -106,19 +106,30 @@
             margin-right: 10%;
             flex: 40%;
             text-align: center;
+            background-position: 10%;
+            
         }
         .headline h2{
             font-weight: 900;
             font-size: 20px;
-            color: rgb(12, 12, 68);
+            color: rgb(2, 2, 27);
             padding: 0;
             margin: 0;
         }
         .headline p{
-            color: gray;
+            color: white;
             text-align: left;
+            font-size: 15px;
+            line-height: 1.6;
+            text-align: justify;
 
         }
+        /*p:first-letter {
+            font-size: 1.5em; /* Tamanho da primeira letra */
+            /*float: left;  Para fazer com que a primeira letra flutue para a esquerda */
+            /*margin-right: 3px; /* Margem à direita da primeira letra para separá-la do texto */
+            /*font-weight: bold; /* Estilo da primeira letra (negrito, neste caso) */
+        /*}*/
         .contact-btn{
             display: inline-block;
             background: rgb(211, 29, 129);
@@ -147,24 +158,48 @@
         <!-- Conteúdo da sua página aqui -->
 
     </div>
+    <h2 style="font-size: 40px;margin-left: 130px;">Paloma Comércio de Parafusos</h2>
     <header class="header">
         <div class="headline">
-            <h2 style="letter-spacing: 15px;">Gerenciador Estoque facíl</h2>
-            <h2 style="font-size: 60px;">Estoque Paloma Comércio</h2>
-            <P>texte para inserir</P>
-            <a href="#" class="contact-btn btn-sm btn-primary btn-light d-inline-block" data-bs-toggle="collapse" style="width: 150px; height: 50px;">ACESSO</a>
+            <!--<h2 style="letter-spacing: 15px;">Gerenciador Estoque facíl</h2>-->
+            <h2 style="font-size: 25px;">Sobre Nós</h2>
+            <br>
+            <P>    A Empresa Paloma Comércio está localizada em Piedade-SP, ela se destaca como uma referência na região quando se trata de ferramentas, parafusos e materiais em geral. Com um compromisso sólido com a qualidade e o atendimento ao cliente, a loja oferece uma ampla variedade de produtos e conta com uma equipe experiente.
+                Ao entrar na Paloma Comércio, você é recebido por um ambiente acolhedor, repleto de corredores e prateleiras abastecidos com ferramentas e materiais essenciais para construção, manutenção e reparos. Desde parafusos de diferentes tamanhos e materiais até ferramentas elétricas de última geração, a loja disponibiliza opções para atender tanto aos profissionais mais exigentes quanto aos consumidores domésticos.
+                O sucesso da loja não se resume apenas à diversidade do catálogo, mas também ao compromisso de proporcionar uma experiência de compra excepcional.</P> 
+            <p>Os funcionários estão sempre prontos para auxiliar os clientes, oferecendo conhecimento técnico e orientação sobre os produtos mais adequados às necessidades específicas de cada projeto.
+                Além disso, a Paloma Comércio valoriza a relação de confiança com seus clientes, garantindo produtos de marcas reconhecidas por sua qualidade e durabilidade. Essa abordagem cuidadosa resulta em clientes satisfeitos que retornam à loja sempre que precisam de suprimentos para seus empreendimentos.
+                Como parte integrante da comunidade de Piedade-SP, a loja também participa ativamente de eventos locais e apoia iniciativas que promovem o desenvolvimento da região. Sua presença vai além de ser apenas um estabelecimento comercial; é um ponto de referência para os profissionais da área e para todos aqueles que valorizam ferramentas confiáveis e materiais de qualidade.</p>
+            <p>Em resumo, a Paloma Comércio é um parceiro confiável para aqueles que buscam excelência em suprimentos para construção, manutenção e reparos. Seja para um projeto simples em casa ou para empreendimentos mais complexos, a loja está pronta para oferecer soluções e produtos que fazem a diferença.</P>
+            <a href="#" class="contact-btn btn-sm btn-primary btn-light d-inline-block" data-bs-toggle="collapse" style="width: 150px; height: 50px;">SAIBA MAIS</a>
         </div>
         <div class="img-headline">
-            <img style="max-width: 90%;" src="{% static '../static/laptop.png' %}">
+            <div class="container">
+                <img style="max-width: 40%;" src="{% static '../static/parafuso2.png' %}">
+            </div>
+            <div>
+                <img style="max-width: 20%;" src="{% static '../static/parafuso1.png' %}">
+            </div>
 
         </div>
     </header>
-    <div>
-
+    <br>
+    <br>
+    <div class="container"> 
+        <h3>Paloma Comércio de Parafusos</h3>
+        <h3> e Ferramentas em Geral</h3></div>
+        <hr>
+        <P style="margin-left: 110px;"> Contato: (11) 94798 - 1038</P>
+        <p style="margin-left: 110px;"> Endereço: Rua Capitão Moraes nº 920-B Bairro: cotianos- Piedade-SP</p>
     </div>
+    <div><p style="margin-left: 110px; font-size: 12px;">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae nobis totam omnis veritatis
+        sit
+        distinctio doloremque quia officiis, asperiores, consectetur dolorem magnam doloribus eos odio
+        quibusdam? Excepturi corrupti labore necessitatibus?</p></div>
+    
 
     <!-- Div para os botões -->
-    <div class="bottom-buttons transparent-div bottom-div my-div">
+    <div class="bottom-buttons  bottom-div my-div">
         <div class="container">
         <div class="d-flex" class="image-container "><!--centraliza-->
             <a href="{% url 'home' %}">   
@@ -184,10 +219,12 @@
                     Produtos
                 </button>
             </a>
-            <button type="button" class="btn btn-img btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 150px; height: 50px;">
-                <img src="{% static '../static/venda.png' %}" alt="Imagem 1" style="width: 20px; height: 20px;">
+            <a href="{% url 'lista_saida' %}">
+                <button type="button" class="btn btn-img btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 150px; height: 50px;">
+                    <img src="{% static '../static/venda.png' %}" alt="Imagem 1" style="width: 20px; height: 20px;">
                 Saída
-            </button>
+                </button>
+            </a>
             <button type="button" class="btn btn-img btn-sm btn-primary" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="width: 150px; height: 50px;">
                 <img src="{% static '../static/painel.png' %}" alt="Imagem 1" style="width: 20px; height: 20px;">
                 Painel Geral

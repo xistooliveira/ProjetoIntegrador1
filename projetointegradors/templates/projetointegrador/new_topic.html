@@ -2,10 +2,23 @@
 
 
 {% block content %} 
-    <p>Adicione um Novo Fornecedor</p>
-    <form action="{% url 'new_topic' %}" method='post'> <!--invia para mesma pagina que esta-->
-        {% csrf_token %}<!--tag de segurança-->
-        {{ form.as_p }}
-        <button name="submit">Adicionar</button>
-    </form>
+<style>
+    /* Estiliza o formulário para remover margem entre os parágrafos */
+    form {
+        margin-left: 20px; /* Margem à esquerda para o formulário */
+    }
+
+    /* Remove a margem inferior dos parágrafos dentro do formulário */
+    form p {
+        margin-bottom: 5px; /* Ajuste o valor conforme necessário */
+    }
+</style>
+    <h3 style="margin-left: 20px">Adicione um Novo Fornecedor</h3>
+    <div class="mb-3">
+        <form action="{% url 'new_topic' %}" method='post'> <!--invia para mesma pagina que esta-->
+            {% csrf_token %}<!--tag de segurança-->
+            {{ form.as_p }}
+        <button name="submit" class="btn btn-primary">Adicionar</button>
+        </form>
+        </div>
 {% endblock content %}

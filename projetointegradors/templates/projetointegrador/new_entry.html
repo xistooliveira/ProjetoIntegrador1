@@ -2,12 +2,24 @@
 
 
 {% block content %} 
-<p><a href="{% url 'topic' topic.id %}">{{ topic }}</a></p>
+<style>
+    /* Estiliza o formulário para remover margem entre os parágrafos */
+    form {
+        margin-left: 20px; /* Margem à esquerda para o formulário */
+    }
+
+    /* Remove a margem inferior dos parágrafos dentro do formulário */
+    form p {
+        margin-bottom: 5px; /* Ajuste o valor conforme necessário */
+    }
+</style>
+    <div><p><a href="{% url 'topic' topic.id %}">{{ topic }}</a></p>
     <p>Adicione uma Nova Entrada</p>
     
     <form action="{% url 'new_entry' topic.id %}" method="post"> <!--envia para mesma pagina que esta-->
         {% csrf_token %}<!--tag de segurança-->
         {{ form.as_p }}
-        <button name="submit">Adicionar</button>
+        <button name="submit" class="btn-primary">Adicionar</button>
     </form>
+    </div>
 {% endblock content %}
