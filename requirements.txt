@@ -43,8 +43,7 @@ jupyterlab-pygments==0.2.2
 Kivy==2.1.0
 
 
-kivy-deps.sdl2==0.4.5
-Kivy-Garden==0.1.5
+
 MarkupSafe==2.1.2
 matplotlib-inline==0.1.6
 mistune==2.0.5
