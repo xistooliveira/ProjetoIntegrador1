@@ -1,6 +1,5 @@
 {% extends 'projetointegrador/base.html' %}
 
-
 {% block content %}
     <h3 style="margin-left: 20px">Lista de Produtos</h3>
         <div class="table-responsive">
@@ -8,6 +7,7 @@
                 <table class="table table-bordered table-nover m-3">
                     <thead class="table-dark">
                         <tr>
+                            <th>Imagem</th>
                             <th>Nome</th>
                             <th>Modelo</th>
                             <th>Marca</th>
@@ -24,6 +24,12 @@
                     <tbody>
                         {% for produto in produtos %}
                         <tr>
+                            <td class="imagem-celula" >{% if produto.imagem %}
+                                <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" style="width: 40px; height:auto;" class="imagem-produto" >
+                                {% else %}
+                                <img src="/static/images/default_image.jpg" alt="Imagem padrão" style="width: 100px; height: auto;">
+                                {% endif %}
+                            </td>
                             <td>{{ produto.nome }} </td>
                             <td>{{ produto.modelo }}</td>
                             <td>{{ produto.marca }}</td>

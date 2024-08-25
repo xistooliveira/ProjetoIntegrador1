@@ -5,7 +5,7 @@
 <h2>Detalhes da Saída - {{ saida.data_saida }}</h2>
 <ul>
 {% for item in saida.itens.all %}
-    <li>{{ item.produto.nome }} - Quantidade: {{ item.quantidade }}</li>
+    <li> {{ item.produto.nome }} - Quantidade: {{ item.quantidade }}</li>
 {% empty %}
     <li>Nenhum item nesta saída.</li>
 {% endfor %}

@@ -11,12 +11,15 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path, os
-
+import django_heroku
+import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))#remover qualquer coisa
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -83,7 +86,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),  #'NAME': BASE_DIR / 'db.sqlite3',
+        'heroku': dj_database_url.config(conn_max_age=600, ssl_require=True)
     }
+    
+    
 }
 
 
@@ -136,4 +142,6 @@ BOOTSTRAP5 = {
 #URL LOGIN DA PAGINA
 LOGIN_URL = '/users/login'
 LOGIN_REDIRECT_URL = 'home'#apos login redireciona apagina 
-#                  
+
+# 
+django_heroku.settings(locals())                 

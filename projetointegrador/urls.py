@@ -14,8 +14,12 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+from django.conf import settings
 from django.contrib import admin #cria o painel admin com a biblioteca python
 from django.urls import path, include #path é a rota do endereço 
+from django.conf.urls.static import static
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),#admin

@@ -30,6 +30,11 @@ def __str__(self):
 
 
 class Produto(models.Model):
+    imagem = models.ImageField(
+        upload_to='produtos/',
+         blank=True, null=True
+    )
+    
     categoria = models.CharField(
         max_length=255,
         null=False,

@@ -13,7 +13,7 @@
     }
 </style>
     <h3 style="margin-left: 20px">Adicionar Produtos</h3>
-    <form class="row g-1 align-items-center" style="margin-left: 20px" method="post" action="{% url 'cria_produto' %}">
+    <form class="row g-1 align-items-center" style="margin-left: 20px" method="post" action="{% url 'cria_produto' %}" >
         <div class="col-auto">
             {% csrf_token %}
             {{ form.as_p }}
