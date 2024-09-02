@@ -1,7 +1,7 @@
 from django.views.generic import ListView
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Topic, Entry, Produto, Saida, ItemSaida #importado do arquivo models
-from .forms import TopicForm, EntryForm, ProdutoForm, SaidaForm, ItemSaidaForm
+from .forms import TopicForm, EntryForm, ProdutoForm, SaidaForm, ItemSaidaForm, ProdutoSearchForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required#permite so quem estiver logado ter acesso as viwes
@@ -236,3 +236,39 @@ def remover_saida(request, saida_id):
         return redirect('lista_saida')  # Redirecionar para a lista de saídas após remover a saída
 
     return render(request, 'projetointegrador/remover_saida.html', {'saida': saida})
+
+
+#def busca_produtos(request): define a funçao e a logica para buscar apenas pelo produto
+    #form = ProdutoSearchForm()
+    produtos = Produto.objects.all()  # Busca todos os produtos por padrão
+
+    #if 'query' in request.GET:
+       ## form = ProdutoSearchForm(request.GET)
+        #if form.is_valid():
+           # query = form.cleaned_data['query']
+            #produtos = produtos.filter(nome__icontains=query)  # Filtra produtos pelo nome
+
+    #return render(request, 'projetointegrador/busca.produtos.html', {'form': form, 'produtos': produtos})
+def busca_produtos(request):
+    form = ProdutoSearchForm(request.GET or None)
+    produtos = Produto.objects.all()
+
+    if form.is_valid():
+        if form.cleaned_data['categoria']:
+            produtos = produtos.filter(categoria__icontains=form.cleaned_data['categoria'])
+        if form.cleaned_data['marca']:
+            produtos = produtos.filter(marca__icontains=form.cleaned_data['marca'])
+        if form.cleaned_data['nome']:
+            produtos = produtos.filter(nome__icontains=form.cleaned_data['nome'])
+        if form.cleaned_data['modelo']:
+            produtos = produtos.filter(modelo__icontains=form.cleaned_data['modelo'])
+        if form.cleaned_data['codigo']:
+            produtos = produtos.filter(codigo__icontains=form.cleaned_data['codigo'])
+        if form.cleaned_data['sku']:
+            produtos = produtos.filter(sku__icontains=form.cleaned_data['sku'])
+        if form.cleaned_data['preco_min']:
+            produtos = produtos.filter(preco__gte=form.cleaned_data['preco_min'])
+        if form.cleaned_data['preco_max']:
+            produtos = produtos.filter(preco__lte=form.cleaned_data['preco_max'])
+
+    return render(request, 'projetointegrador/busca.produtos.html', {'form': form, 'produtos': produtos})

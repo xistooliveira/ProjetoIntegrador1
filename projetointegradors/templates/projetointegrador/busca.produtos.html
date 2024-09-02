@@ -1,0 +1,23 @@
+{% extends 'projetointegrador/base.html' %}
+{% block content %}   
+    <h2>Lista de Produtos</h2>
+
+    <form method="get">
+        {{ form.as_p }}
+        <button type="submit">Buscar</button>
+    </form>
+
+    <ul>
+        {% for produto in produtos %}
+            <li>{{ produto.nome }} - {{ produto.categoria }} - {{ produto.marca }} - {{ produto.modelo }} - {{ produto.codigo }} - {{ produto.sku }} - {{ produto.preco }}- {{ produto.quantidade }}</li>
+            <a href="{% url 'editar_produto' produto.id %}">Editar Produto</a>
+            
+        {% empty %}
+        
+            <li>Nenhum produto encontrado.</li>
+        {% endfor %}
+    </ul>
+
+    
+{% endblock content %}
+

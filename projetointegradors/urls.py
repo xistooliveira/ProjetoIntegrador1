@@ -20,6 +20,7 @@ from . import views
 #from .views import lista_produtos, cria_produto
 from django.conf import settings
 from django.conf.urls.static import static
+#from .views import busca_produtos
 
 
 
@@ -40,6 +41,9 @@ urlpatterns = [ #ROTAS
     path('detalhes_saida/<int:pk>/', views.detalhes_saida, name='detalhes_saida'),
     path('registrar_saida/', views.registrar_saida, name='registrar_saida'),
     path('remover_saida/<int:saida_id>/', views.remover_saida, name='remover_saida'),
+    
+    path('busca_produtos/', views.busca_produtos, name='busca_produtos'),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
