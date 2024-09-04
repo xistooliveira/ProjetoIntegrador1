@@ -15,8 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 #from django.contrib import admin #cria o painel admin com a biblioteca python
-from django.urls import path
+from django.urls import path, include
 from . import views
+from rest_framework.routers import DefaultRouter
+from .api_views import ProdutoListCreateAPIView
 #from .views import lista_produtos, cria_produto
 from django.conf import settings
 from django.conf.urls.static import static
@@ -43,6 +45,7 @@ urlpatterns = [ #ROTAS
     path('remover_saida/<int:saida_id>/', views.remover_saida, name='remover_saida'),
     
     path('busca_produtos/', views.busca_produtos, name='busca_produtos'),
+    path('produte/', ProdutoListCreateAPIView.as_view(), name='produto-list-create'),#API, Dá um nome à rota para facilitar sua referência em outras partes do código, como templates ou redirecionamentos.
 
 ]
 if settings.DEBUG:

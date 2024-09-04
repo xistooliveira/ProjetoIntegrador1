@@ -25,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),#admin
     path('', include('projetointegradors.urls')), #quando o url estiver  vazio, vai p o meu Url do meu APP
     path('users/', include('users.urls')), #procura a pagina no navegador
+   
 ]

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'users',
     #app de terceiro
     'bootstrap5', 
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
