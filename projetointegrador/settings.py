@@ -145,4 +145,10 @@ LOGIN_URL = '/users/login'
 LOGIN_REDIRECT_URL = 'home'#apos login redireciona apagina 
 
 # 
-django_heroku.settings(locals())                 
+django_heroku.settings(locals())   
+
+#REST_FRAMEWORK = {
+    #'DEFAULT_RENDERER_CLASSES': (
+        #'rest_framework.renderers.JSONRenderer',
+   # ),
+#}

@@ -22,6 +22,7 @@ class ProdutoListCreateAPIView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
+    
 # ProdutoSerializer está configurado para converter instâncias do modelo Produto em JSON e vice-versa, 
 # permitindo a manipulação fácil dos dados na sua API.  Explicação do Código:
 #Método get:
@@ -35,3 +36,48 @@ class ProdutoListCreateAPIView(APIView):
 #Se os dados não forem válidos, retorna os erros de validação com status HTTP 400 (Bad Request).
 
 
+class ProdutoDetailAPIView(APIView):
+    def get_object(self, pk):
+        try:
+            return Produto.objects.get(pk=pk)
+        except Produto.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk):
+        produto = self.get_object(pk)
+        serializer = ProdutoSerializer(produto)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        produto = self.get_object(pk)
+        serializer = ProdutoSerializer(produto, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def patch(self, request, pk):
+        produto = self.get_object(pk)
+        serializer = ProdutoSerializer(produto, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        produto = self.get_object(pk)
+        produto.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+    
+#get(self, request, pk): Obtém um produto específico por id.
+#put(self, request, pk): Atualiza completamente um produto (substitui todos os campos).
+#patch(self, request, pk): Atualiza parcialmente um produto (modifica apenas os campos fornecidos).
+#delete(self, request, pk): Remove o produto específico.
+#get_object(self, pk): Método auxiliar para encontrar o produto pelo id, e levanta um Http404 se não for encontrado
+
+#Para  testar os métodos PATCH, PUT, e DELETE no Insomnia ou no Postman usando a URL /produte/<id>/. Por exemplo:
+
+#GET: http://127.0.0.1:8000/produte/1/ (para obter um produto).
+#PUT: http://127.0.0.1:8000/produte/1/ (para atualizar completamente o produto).
+#PATCH: http://127.0.0.1:8000/produte/1/ (para atualizar parcialmente o produto).
+#DELETE: http://127.0.0.1:8000/produte/1/ (para excluir o produto)
