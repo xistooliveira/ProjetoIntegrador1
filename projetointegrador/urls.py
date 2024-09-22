@@ -19,11 +19,17 @@ from django.conf import settings
 from django.contrib import admin #cria o painel admin com a biblioteca python
 from django.urls import path, include #path é a rota do endereço 
 from django.conf.urls.static import static
+from rest_framework_simplejwt.views import ( #para autenticacao React
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),#admin
     path('', include('projetointegradors.urls')), #quando o url estiver  vazio, vai p o meu Url do meu APP
     path('users/', include('users.urls')), #procura a pagina no navegador
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),#autenticacao React
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
    
 ]
